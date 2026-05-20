@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jobs – B & H Schulbegleitung Hannover</title>
+  <meta name="description" content="Schulbegleiter (m/w/d) gesucht in Hannover. 24 €/Std., 1.000 € Weihnachtsgeld, 100 € Fahrtkostenpauschale. Teilzeit und Vollzeit möglich." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&family=Nunito+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Stellenanzeigen ────────────────────────────── */
+    .stellen-section { background: var(--bg); }
+    .stelle {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .stelle-header {
+      padding: 24px 28px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .stelle-badges { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+    .badge {
+      display: inline-block;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: .73rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    .badge-teal { background: var(--teal-light); color: var(--teal); }
+    .badge-orange { background: #fef0e6; color: #c2410c; }
+    .badge-violet { background: #ede9fe; color: #6d28d9; }
+    .stelle h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 6px; }
+    .stelle-meta { font-size: .83rem; color: var(--text-soft); }
+    .stelle-body {
+      padding: 0 28px 28px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .stelle-body h4 {
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--text-soft);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin: 24px 0 10px;
+    }
+    .stelle-body ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .stelle-body li {
+      font-size: .9rem;
+      color: var(--text-soft);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .stelle-body li::before {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 5px;
+      background: var(--teal-mid);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 9px;
+    }
+
+    /* ── Benefits ───────────────────────────────────── */
+    .benefits-section { background: var(--white); }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .benefit-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+    }
+    .benefit-item h4 { font-size: .95rem; font-weight: 700; margin-bottom: 6px; }
+    .benefit-item p { font-size: .85rem; color: var(--text-soft); line-height: 1.65; }
+
+    /* ── CTA ────────────────────────────────────────── */
+    .cta-section {
+      background: var(--teal);
+      padding: 64px 28px;
+      text-align: center;
+    }
+    .cta-section h2 { color: var(--white); font-size: 1.7rem; font-weight: 800; margin-bottom: 12px; }
+    .cta-section p { color: rgba(255,255,255,.8); font-size: .97rem; max-width: 480px; margin: 0 auto 28px; }
+
+    /* ── Gehaltsrechner ─────────────────────────────── */
+    .calc-section { background: var(--white); }
+    .calc-wrapper {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 40px 44px;
+    }
+    .calc-toggle {
+      display: flex;
+      gap: 8px;
+      background: var(--border-soft);
+      border-radius: var(--radius);
+      padding: 4px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .calc-toggle-btn {
+      flex: 1;
+      padding: 10px 16px;
+      border: none;
+      background: transparent;
+      border-radius: calc(var(--radius) - 4px);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: .82rem;
+      color: var(--text-soft);
+      cursor: pointer;
+      transition: background .18s, color .18s, box-shadow .18s;
+    }
+    .calc-toggle-btn.active {
+      background: var(--white);
+      color: var(--teal-dark);
+      box-shadow: var(--shadow-sm);
+    }
+    .calc-slider-wrap { margin-bottom: 32px; }
+    .calc-slider-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .calc-slider-label span { font-size: .88rem; color: var(--text-soft); font-weight: 500; }
+    .calc-slider-label strong { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--teal-dark); }
+    .calc-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: linear-gradient(to right, var(--teal) var(--fill, 50%), var(--border) var(--fill, 50%));
+      outline: none;
+      cursor: pointer;
+    }
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 3px solid var(--teal);
+      box-shadow: 0 2px 8px rgba(13,148,136,.3);
+      cursor: pointer;
+      transition: box-shadow .15s;
+    }
+    .calc-slider::-webkit-slider-thumb:hover { box-shadow: 0 2px 14px rgba(13,148,136,.45); }
+    .calc-slider-range { display: flex; justify-content: space-between; font-size: .75rem; color: var(--text-muted); margin-top: 6px; }
+    .calc-result {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .calc-result-label { font-size: .8rem; color: var(--text-soft); font-weight: 500; margin-bottom: 4px; }
+    .calc-result-value { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 2rem; color: var(--teal-dark); display: block; }
+    .calc-extras { display: flex; gap: 12px; flex-wrap: wrap; }
+    .calc-extra {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal-bg);
+      border: 1px solid var(--teal-light);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+      font-size: .82rem;
+      color: var(--teal-dark);
+      font-weight: 600;
+      transition: opacity .3s;
+    }
+    .calc-extra.locked { opacity: .35; filter: grayscale(.4); }
+    .calc-extra-icon { font-size: 1rem; }
+
+    /* ── Schnellbewerbung ───────────────────────────── */
+    .bewerbung-section { background: var(--teal-bg); }
+    .quiz-wrapper {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+    .quiz-progress { height: 4px; background: var(--border); }
+    .quiz-progress-bar {
+      height: 100%;
+      background: var(--teal);
+      border-radius: 2px;
+      transition: width .4s cubic-bezier(.4,0,.2,1);
+    }
+    .quiz-body { padding: 40px 44px; }
+    .quiz-step { display: none; }
+    .quiz-step.active { display: block; }
+    .quiz-step-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+    .quiz-question {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 24px;
+      line-height: 1.35;
+    }
+    .quiz-options { display: flex; flex-direction: column; gap: 10px; }
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-align: left;
+      font-size: .92rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: border-color .18s, background .18s, box-shadow .18s;
+    }
+    .quiz-option:hover { border-color: var(--teal-mid); background: var(--teal-bg); }
+    .quiz-option.selected {
+      border-color: var(--teal);
+      background: var(--teal-bg);
+      box-shadow: 0 0 0 1px var(--teal);
+    }
+    .quiz-option-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .quiz-form { display: flex; flex-direction: column; gap: 18px; }
+    .quiz-form label { font-size: .85rem; font-weight: 600; color: var(--text); display: block; margin-bottom: 6px; }
+    .quiz-form input, .quiz-form textarea, .quiz-form select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: .92rem;
+      color: var(--text);
+      background: var(--bg);
+      transition: border-color .18s;
+      outline: none;
+    }
+    .quiz-form input:focus, .quiz-form textarea:focus, .quiz-form select:focus { border-color: var(--teal); background: var(--white); }
+    .quiz-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .quiz-form .privacy { display: flex; gap: 10px; align-items: flex-start; font-size: .8rem; color: var(--text-soft); }
+    .quiz-form .privacy input[type=checkbox] { width: auto; margin-top: 2px; accent-color: var(--teal); }
+    .quiz-summary {
+      background: var(--teal-bg);
+      border: 1px solid var(--teal-light);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      font-size: .84rem;
+      color: var(--teal-dark);
+      margin-bottom: 20px;
+    }
+    .quiz-nav { display: flex; justify-content: flex-end; margin-top: 24px; gap: 10px; }
+    .quiz-back {
+      background: none;
+      border: 1.5px solid var(--border);
+      color: var(--text-soft);
+      padding: 10px 22px;
+      border-radius: var(--radius);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: .88rem;
+      cursor: pointer;
+      transition: border-color .18s, color .18s;
+    }
+    .quiz-back:hover { border-color: var(--teal); color: var(--teal); }
+
+    @media (max-width: 768px) {
+      .stelle-body { grid-template-columns: 1fr; gap: 0; }
+      .calc-wrapper, .quiz-body { padding: 28px 24px; }
+      .calc-result { flex-direction: column; align-items: flex-start; }
+      .quiz-form .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="nav-logo-text">
+        <strong>B & H – Schulbegleitung</strong>
+        <span>Hannover</span>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Startseite</a>
+      <a href="leistungen.html">Leistungen</a>
+      <a href="ueber-uns.html">Über uns</a>
+      <a href="jobs.html" class="active">Jobs</a>
+      <a href="kontakt.html" class="nav-contact">Kontakt</a>
+    </div>
+    <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menü"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb"><a href="index.html">Startseite</a> › Jobs</div>
+    <h1>Schulbegleiter (m/w/d) unbefristet gesucht</h1>
+    <p>Wir suchen Menschen, die mit Herz dabei sind – nicht nur mit Abschluss. Bewerben Sie sich jetzt in Hannover und Umgebung.</p>
+  </div>
+</div>
+
+<!-- Gehaltsrechner -->
+<section class="section calc-section">
+  <div class="section-inner">
+    <span class="section-label">Gehaltsrechner</span>
+    <h2 class="section-title">Was können Sie verdienen?</h2>
+    <p class="section-intro">Wählen Sie Ihre Qualifikation und gewünschte Stundenzahl – der Rechner zeigt Ihr persönliches Monatsgehalt.</p>
+
+    <div class="calc-wrapper">
+      <div class="calc-toggle">
+        <button class="calc-toggle-btn active" id="btnQualifiziert" onclick="setQualification(24, this)">
+          Qualifiziert · 24 €/Std.
+        </button>
+        <button class="calc-toggle-btn" id="btnUnqualifiziert" onclick="setQualification(19, this)">
+          Unqualifiziert · 19 €/Std.
+        </button>
+      </div>
+
+      <div class="calc-slider-wrap">
+        <div class="calc-slider-label">
+          <span>Stunden pro Woche</span>
+          <strong id="hoursDisplay">25 Std.</strong>
+        </div>
+        <input type="range" min="10" max="40" value="25" id="hoursSlider" class="calc-slider" oninput="updateCalc()">
+        <div class="calc-slider-range">
+          <span>10 Std.</span>
+          <span>40 Std.</span>
+        </div>
+      </div>
+
+      <div class="calc-result">
+        <div>
+          <div class="calc-result-label">Bruttogehalt pro Monat</div>
+          <span class="calc-result-value" id="monthlyCalc">ca. 2.598 €</span>
+        </div>
+        <div class="calc-extras">
+          <div class="calc-extra" id="extraWeihnacht">
+            <span class="calc-extra-icon">🎄</span>
+            bis 1.000 € Weihnachtsgeld
+          </div>
+          <div class="calc-extra" id="extraFahrt">
+            <span class="calc-extra-icon">🚗</span>
+            bis 100 € Fahrtkosten/Monat
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Schnellbewerbung -->
+<section class="section bewerbung-section" id="schnellbewerbung">
+  <div class="section-inner">
+    <span class="section-label">⚡ 2-Minuten-Bewerbung</span>
+    <h2 class="section-title">Jetzt bewerben – schnell & unkompliziert</h2>
+    <p class="section-intro">Kein langer Lebenslauf. Drei kurze Fragen, Ihre Kontaktdaten – und wir melden uns persönlich bei Ihnen.</p>
+
+    <div class="quiz-wrapper">
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="progressBar" style="width: 25%;"></div>
+      </div>
+      <div class="quiz-body">
+
+        <!-- Schritt 1: Qualifikation -->
+        <div class="quiz-step active" id="qStep1">
+          <p class="quiz-step-label">Schritt 1 von 3</p>
+          <p class="quiz-question">Haben Sie eine pädagogische oder therapeutische Ausbildung?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="pickOption(this, 'qualification', 'qualifiziert')">
+              <span class="quiz-option-icon">🎓</span>
+              Ja – z.B. Erzieher/in, Sozialpädagoge/in oder ähnliches
+            </button>
+            <button class="quiz-option" onclick="pickOption(this, 'qualification', 'unqualifiziert')">
+              <span class="quiz-option-icon">❤️</span>
+              Nein – aber ich möchte mit Kindern arbeiten
+            </button>
+            <button class="quiz-option" onclick="pickOption(this, 'qualification', 'student')">
+              <span class="quiz-option-icon">📚</span>
+              Ich studiere gerade (ab 3. Semester)
+            </button>
+          </div>
+          <div class="quiz-nav">
+            <button class="btn btn-primary" onclick="nextStep(1)" id="nextBtn1" style="opacity:.4;pointer-events:none">Weiter →</button>
+          </div>
+        </div>
+
+        <!-- Schritt 2: Stunden -->
+        <div class="quiz-step" id="qStep2">
+          <p class="quiz-step-label">Schritt 2 von 3</p>
+          <p class="quiz-question">Wie viele Stunden pro Woche wären Sie verfügbar?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="pickOption(this, 'hours', 'bis 20 Stunden')">
+              <span class="quiz-option-icon">🌤</span>
+              Bis zu 20 Stunden – Teilzeit
+            </button>
+            <button class="quiz-option" onclick="pickOption(this, 'hours', '20–30 Stunden')">
+              <span class="quiz-option-icon">☀️</span>
+              20–30 Stunden – flexible Teilzeit
+            </button>
+            <button class="quiz-option" onclick="pickOption(this, 'hours', 'ab 30 Stunden')">
+              <span class="quiz-option-icon">🌟</span>
+              30+ Stunden – Vollzeit oder nahezu Vollzeit
+            </button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-back" onclick="prevStep(2)">← Zurück</button>
+            <button class="btn btn-primary" onclick="nextStep(2)" id="nextBtn2" style="opacity:.4;pointer-events:none">Weiter →</button>
+          </div>
+        </div>
+
+        <!-- Schritt 3: Start -->
+        <div class="quiz-step" id="qStep3">
+          <p class="quiz-step-label">Schritt 3 von 3</p>
+          <p class="quiz-question">Wann könnten Sie frühestens beginnen?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="pickOption(this, 'start', 'sofort')">
+              <span class="quiz-option-icon">🚀</span>
+              Ab sofort oder kurzfristig
+            </button>
+            <button class="quiz-option" onclick="pickOption(this, 'start', 'nächsten Monat')">
+              <span class="quiz-option-icon">📅</span>
+              Im nächsten Monat
+            </button>
+            <button class="quiz-option" onclick="pickOption(this, 'start', 'flexibel')">
+              <span class="quiz-option-icon">💬</span>
+              Noch offen – gerne besprechen
+            </button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-back" onclick="prevStep(3)">← Zurück</button>
+            <button class="btn btn-primary" onclick="nextStep(3)" id="nextBtn3" style="opacity:.4;pointer-events:none">Zum Formular →</button>
+          </div>
+        </div>
+
+        <!-- Schritt 4: Kontaktformular -->
+        <div class="quiz-step" id="qStep4">
+          <p class="quiz-step-label">Fast geschafft!</p>
+          <p class="quiz-question">Ihre Kontaktdaten – wir melden uns innerhalb von 24 Stunden.</p>
+          <div class="quiz-summary" id="quizSummary"></div>
+
+          <form class="quiz-form" action="https://formspree.io/f/xqejpkva" method="POST">
+            <input type="hidden" name="_subject" value="Schnellbewerbung über Website">
+            <input type="hidden" name="Qualifikation" id="f_qualification" value="">
+            <input type="hidden" name="Verfügbarkeit" id="f_hours" value="">
+            <input type="hidden" name="Starttermin" id="f_start" value="">
+            <div class="form-row">
+              <div>
+                <label for="f_name">Ihr Name *</label>
+                <input type="text" id="f_name" name="Name" placeholder="Max Mustermann" required>
+              </div>
+              <div>
+                <label for="f_phone">Telefon *</label>
+                <input type="tel" id="f_phone" name="Telefon" placeholder="+49 …" required>
+              </div>
+            </div>
+            <div>
+              <label for="f_email">E-Mail-Adresse *</label>
+              <input type="email" id="f_email" name="E-Mail" placeholder="ihre@email.de" required>
+            </div>
+            <div>
+              <label for="f_message">Kurze Nachricht (optional)</label>
+              <input type="text" id="f_message" name="Nachricht" placeholder="z.B. Erfahrungen, Fragen, Wünsche …">
+            </div>
+            <label class="privacy">
+              <input type="checkbox" name="Datenschutz" required>
+              <span>Ich habe die <a href="datenschutz.html" style="color:var(--teal);">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Kontaktaufnahme zu.</span>
+            </label>
+            <div class="quiz-nav" style="margin-top:8px;">
+              <button type="button" class="quiz-back" onclick="prevStep(4)">← Zurück</button>
+              <button type="submit" class="btn btn-primary">Jetzt bewerben ✓</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stellenangebote -->
+<section class="section stellen-section">
+  <div class="section-inner">
+    <span class="section-label">Offene Stellen</span>
+    <h2 class="section-title">Aktuelle Stellenangebote</h2>
+    <p class="section-intro">Beide Stellen sind in Hannover und Umgebung zu besetzen. Teilzeit und Vollzeit möglich – wir richten uns nach Ihrer Lebenssituation.</p>
+
+    <!-- Stelle 1 -->
+    <div class="stelle">
+      <div class="stelle-header">
+        <div>
+          <div class="stelle-badges">
+            <span class="badge badge-teal">Vollzeit</span>
+            <span class="badge badge-teal">Teilzeit</span>
+            <span class="badge badge-orange">Hannover</span>
+            <span class="badge badge-violet">Unbefristet</span>
+          </div>
+          <h3>Qualifizierte Schulbegleitung (m/w/d)</h3>
+          <span class="stelle-meta">Brackmann & Hogrefe GbR · ab sofort · 24 €/Std.</span>
+        </div>
+        <a href="#schnellbewerbung" class="btn btn-primary">Jetzt bewerben</a>
+      </div>
+      <div class="stelle-body">
+        <div>
+          <h4>Aufgaben</h4>
+          <ul>
+            <li>Individuelle Begleitung von Kindern mit Förderbedarf im Schulalltag</li>
+            <li>Unterstützung beim Lernen, in Pausen und bei schulischen Übergängen</li>
+            <li>Enger Austausch mit Eltern, Lehrkräften und unserem Team</li>
+            <li>Dokumentation und Reflexion der Begleitung</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Qualifizierende Abschlüsse (Auswahl)</h4>
+          <ul>
+            <li>Erzieher/in, Heilerziehungspfleger/in, Heilpädagoge/in</li>
+            <li>Sozialpädagoge/in, Sozialarbeiter/in (BA/MA/Diplom)</li>
+            <li>Kindheitspädagoge/in, Sonderpädagoge/in</li>
+            <li>Ergotherapeut/in, Logopäde/in, Physiotherapeut/in</li>
+            <li>Psychologe/in, Pädagoge/in mit Hochschulabschluss</li>
+            <li>Gesundheits- und Kinderkrankenpfleger/in</li>
+            <li>Studierende der o. g. Fachrichtungen (ab 3. Semester)</li>
+            <li>Vergleichbare anerkannte Qualifikationen nach SGB VIII</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stelle 2 -->
+    <div class="stelle">
+      <div class="stelle-header">
+        <div>
+          <div class="stelle-badges">
+            <span class="badge badge-teal">Vollzeit</span>
+            <span class="badge badge-teal">Teilzeit</span>
+            <span class="badge badge-orange">Hannover</span>
+            <span class="badge badge-violet">Unbefristet</span>
+          </div>
+          <h3>Unqualifizierte Schulbegleitung (m/w/d)</h3>
+          <span class="stelle-meta">Brackmann & Hogrefe GbR · ab sofort · 19 €/Std.</span>
+        </div>
+        <a href="#schnellbewerbung" class="btn btn-primary">Jetzt bewerben</a>
+      </div>
+      <div class="stelle-body">
+        <div>
+          <h4>Aufgaben</h4>
+          <ul>
+            <li>Praktische Alltagsbegleitung eines Kindes in der Schule</li>
+            <li>Orientierung und Struktur im Schulalltag geben</li>
+            <li>Verlässliche Bezugsperson in Unterricht und Pausen</li>
+            <li>Regelmäßiger Austausch mit Familie und unserem Team</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Voraussetzungen</h4>
+          <ul>
+            <li>Keine formale pädagogische Ausbildung notwendig</li>
+            <li>Freude an der Arbeit mit Kindern und Jugendlichen</li>
+            <li>Zuverlässigkeit, Empathie und Offenheit</li>
+            <li>Bereitschaft zur Einarbeitung durch unser Team</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Benefits -->
+<section class="section benefits-section">
+  <div class="section-inner">
+    <span class="section-label">Was wir bieten</span>
+    <h2 class="section-title">Mehr als ein Job</h2>
+    <p class="section-intro">Bei B & H werden Sie nicht ins kalte Wasser geworfen – wir begleiten Sie von Anfang an.</p>
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <h4>Faire Vergütung</h4>
+        <p>Bis zu 24&nbsp;€/Stunde, bis zu 1.000&nbsp;€ Weihnachtsgeld und bis zu 100&nbsp;€ monatliche Fahrtkostenpauschale – transparent und ohne Überraschungen.</p>
+      </div>
+      <div class="benefit-item">
+        <h4>Familienfreundliche Zeiten</h4>
+        <p>Arbeit ausschließlich während der Schulzeiten – keine Wochenenden, keine Abend- oder Nachtschichten.</p>
+      </div>
+      <div class="benefit-item">
+        <h4>Einarbeitung & Begleitung</h4>
+        <p>Wir bereiten Sie auf Ihre erste Begleitung vor und stehen Ihnen jederzeit mit Rat und Unterstützung zur Seite.</p>
+      </div>
+      <div class="benefit-item">
+        <h4>Sinnvolle Tätigkeit</h4>
+        <p>Sie machen einen echten Unterschied – jeden Tag. Kinder, die Ihre Unterstützung bekommen, merken das.</p>
+      </div>
+      <div class="benefit-item">
+        <h4>Flexible Modelle</h4>
+        <p>Ob Teilzeit, Vollzeit oder als Berufseinsteiger – wir finden gemeinsam ein Modell, das zu Ihnen passt.</p>
+      </div>
+      <div class="benefit-item">
+        <h4>Kurze Wege</h4>
+        <p>Kleines Team, direkte Kommunikation. Sie haben immer einen festen Ansprechpartner bei uns.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <strong>Brackmann & Hogrefe GbR</strong>
+        <p>Professionelle Schulbegleitung in Hannover und Umgebung nach SGB VIII und SGB IX.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="leistungen.html">Leistungen</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Rechtliches</h5>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Brackmann & Hogrefe GbR</span>
+      <div><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── Mobile Nav ─────────────────────────────────── */
+  const btn = document.getElementById('mobileBtn');
+  const nav = document.getElementById('navLinks');
+  btn.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  /* ── Gehaltsrechner ─────────────────────────────── */
+  let currentRate = 24;
+
+  function setQualification(rate, clickedBtn) {
+    currentRate = rate;
+    document.querySelectorAll('.calc-toggle-btn').forEach(b => b.classList.remove('active'));
+    clickedBtn.classList.add('active');
+    updateCalc();
+  }
+
+  function updateCalc() {
+    const slider = document.getElementById('hoursSlider');
+    const hours = parseInt(slider.value);
+    const monthly = Math.round(hours * currentRate * 4.33);
+    const formatted = monthly.toLocaleString('de-DE');
+
+    document.getElementById('hoursDisplay').textContent = hours + ' Std.';
+    document.getElementById('monthlyCalc').textContent = 'ca. ' + formatted + ' €';
+
+    // Slider fill gradient
+    const min = parseInt(slider.min), max = parseInt(slider.max);
+    const pct = ((hours - min) / (max - min)) * 100;
+    slider.style.setProperty('--fill', pct + '%');
+
+    // Weihnachtsgeld dimmt bei weniger als 20 Std.
+    document.getElementById('extraWeihnacht').classList.toggle('locked', hours < 20);
+    document.getElementById('extraFahrt').classList.remove('locked');
+  }
+
+  // Initialisierung
+  updateCalc();
+
+  /* ── Schnellbewerbung Quiz ──────────────────────── */
+  const quizData = { qualification: null, hours: null, start: null };
+  const qualLabels = {
+    qualifiziert: 'Qualifizierte Kraft (pädagogische/therapeutische Ausbildung)',
+    unqualifiziert: 'Quereinsteiger/in (keine Fachausbildung)',
+    student: 'Studierende/r (ab 3. Semester)'
+  };
+  let currentStep = 1;
+
+  function pickOption(el, key, value) {
+    el.closest('.quiz-options').querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    quizData[key] = value;
+    const nextBtn = document.getElementById('nextBtn' + currentStep);
+    if (nextBtn) { nextBtn.style.opacity = '1'; nextBtn.style.pointerEvents = 'auto'; }
+  }
+
+  function nextStep(from) {
+    if (!quizData[['qualification', 'hours', 'start'][from - 1]]) return;
+    document.getElementById('qStep' + from).classList.remove('active');
+    document.getElementById('qStep' + (from + 1)).classList.add('active');
+    currentStep = from + 1;
+    updateProgress();
+    if (from + 1 === 4) buildSummary();
+  }
+
+  function prevStep(from) {
+    document.getElementById('qStep' + from).classList.remove('active');
+    document.getElementById('qStep' + (from - 1)).classList.add('active');
+    currentStep = from - 1;
+    updateProgress();
+  }
+
+  function updateProgress() {
+    document.getElementById('progressBar').style.width = (currentStep / 4 * 100) + '%';
+  }
+
+  function buildSummary() {
+    const qLabel = qualLabels[quizData.qualification] || quizData.qualification;
+    document.getElementById('quizSummary').innerHTML =
+      '📋 <strong>Ihre Angaben:</strong> ' + qLabel +
+      ' · ' + quizData.hours +
+      ' · Start: ' + quizData.start;
+    document.getElementById('f_qualification').value = qLabel;
+    document.getElementById('f_hours').value = quizData.hours;
+    document.getElementById('f_start').value = quizData.start;
+  }
+</script>
+</body>
+</html>

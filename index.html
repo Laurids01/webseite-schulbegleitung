@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B & H – Schulbegleitung Hannover</title>
+  <meta name="description" content="Professionelle Schulbegleitung in Hannover nach SGB VIII und SGB IX. Qualifizierte und unqualifizierte Begleitung für Kinder mit Förderbedarf." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Hero ──────────────────────────────────────── */
+    .hero {
+      background: var(--teal-dark);
+      color: var(--white);
+      padding: 88px 28px 80px;
+    }
+    .hero-inner { max-width: var(--max-width); margin: auto; }
+    .hero h1 {
+      font-size: clamp(2.1rem, 4.5vw, 3.1rem);
+      font-weight: 800;
+      color: var(--white);
+      max-width: 660px;
+      margin-bottom: 22px;
+      line-height: 1.12;
+    }
+    .hero h1 em { font-style: normal; color: #7dd3cc; }
+    .hero-sub {
+      font-size: 1.05rem;
+      opacity: .78;
+      max-width: 500px;
+      margin-bottom: 44px;
+      line-height: 1.72;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-actions .btn { font-size: .92rem; }
+
+    /* ── Faktenleiste ──────────────────────────────── */
+    .fakten {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .fakten-inner {
+      max-width: var(--max-width);
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .fakt {
+      padding: 28px 24px;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .fakt:last-child { border-right: none; }
+    .fakt strong {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: .95rem;
+      color: var(--text);
+    }
+    .fakt span { font-size: .82rem; color: var(--text-soft); }
+
+    /* ── Jobs Teaser ───────────────────────────────── */
+    .jobs-teaser {
+      background: var(--teal);
+      color: var(--white);
+      padding: 64px 28px;
+    }
+    .jobs-teaser-inner {
+      max-width: var(--max-width);
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .jobs-teaser h2 {
+      color: var(--white);
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .jobs-teaser p { opacity: .82; font-size: .95rem; max-width: 440px; line-height: 1.7; }
+    .jobs-highlights { display: flex; gap: 36px; margin-top: 28px; flex-wrap: wrap; }
+    .jobs-highlight strong {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #7dd3cc;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .jobs-highlight span { font-size: .78rem; opacity: .7; }
+
+    @media (max-width: 768px) {
+      .fakten-inner { grid-template-columns: 1fr 1fr; }
+      .fakt:nth-child(2) { border-right: none; }
+      .jobs-teaser-inner { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .fakten-inner { grid-template-columns: 1fr; }
+      .fakt { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="nav-logo-text">
+        <strong>B & H – Schulbegleitung</strong>
+        <span>Hannover</span>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Startseite</a>
+      <a href="leistungen.html">Leistungen</a>
+      <a href="ueber-uns.html">Über uns</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="kontakt.html" class="nav-contact">Kontakt</a>
+    </div>
+    <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="pill" style="margin-bottom: 24px; background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.2); color: white;">
+      <span class="pill-dot" style="background: #7dd3cc;"></span>
+      Jetzt Stellen offen in Hannover & Umgebung
+    </div>
+    <h1>Schulbegleitung, die <em>ankommt</em> –<br>für jedes Kind.</h1>
+    <p class="hero-sub">Brackmann & Hogrefe GbR begleitet Kinder und Jugendliche mit Förderbedarf im Schulalltag – qualifiziert, verlässlich und eng abgestimmt mit Familie und Schule.</p>
+    <div class="hero-actions">
+      <a href="kontakt.html" class="btn btn-white" style="font-size:1rem;padding:15px 28px;font-weight:700;">Schulbegleitung anfragen</a>
+    </div>
+  </div>
+</section>
+
+<!-- Faktenleiste -->
+<div class="fakten">
+  <div class="fakten-inner">
+    <div class="fakt">
+      <strong>SGB VIII & SGB IX</strong>
+      <span>Anerkannter Leistungserbringer</span>
+    </div>
+    <div class="fakt">
+      <strong>Hannover & Umgebung</strong>
+      <span>Alle Schulformen & Jahrgänge</span>
+    </div>
+    <div class="fakt">
+      <strong>Qualifiziert & unqualifiziert</strong>
+      <span>Individuell nach Förderbedarf</span>
+    </div>
+    <div class="fakt">
+      <strong>Persönlicher Kontakt</strong>
+      <span>Freundlich und nah</span>
+    </div>
+  </div>
+</div>
+
+<!-- Jobs Teaser -->
+<section class="jobs-teaser">
+  <div class="jobs-teaser-inner">
+    <div>
+      <h2>Werden Sie Teil unseres Teams</h2>
+      <p>Wir suchen Menschen, die wirklich etwas bewirken möchten. Keine Vorerfahrung zwingend – wir bilden aus und begleiten Sie von Anfang an.</p>
+      <div class="jobs-highlights">
+        <div class="jobs-highlight">
+          <strong>bis zu 24 €</strong>
+          <span>Stundenlohn</span>
+        </div>
+        <div class="jobs-highlight">
+          <strong>bis zu 1.000 €</strong>
+          <span>Weihnachtsgeld</span>
+        </div>
+        <div class="jobs-highlight">
+          <strong>bis zu 100 €</strong>
+          <span>Fahrtkosten/Monat</span>
+        </div>
+      </div>
+    </div>
+    <a href="jobs.html#schnellbewerbung" class="btn btn-white" style="flex-shrink:0">Als Schulbegleiter bewerben →</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <strong>Brackmann & Hogrefe GbR</strong>
+        <p>Professionelle Schulbegleitung in Hannover und Umgebung nach SGB VIII und SGB IX.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="leistungen.html">Leistungen</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Rechtliches</h5>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Brackmann & Hogrefe GbR</span>
+      <div>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('mobileBtn');
+  const nav = document.getElementById('navLinks');
+  btn.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+</script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontakt – B & H Schulbegleitung Hannover</title>
+  <meta name="description" content="Kontaktieren Sie B & H Schulbegleitung Hannover – für Anfragen zu Schulbegleitung oder Bewerbungen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&family=Nunito+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .kontakt-section { background: var(--bg); }
+    .kontakt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 52px;
+      align-items: start;
+    }
+    .kontakt-info h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 14px; }
+    .kontakt-info p { font-size: .92rem; color: var(--text-soft); line-height: 1.75; margin-bottom: 32px; }
+    .kontakt-details { display: flex; flex-direction: column; gap: 20px; }
+    .k-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .k-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--teal-light);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .k-item strong { display: block; font-size: .82rem; font-weight: 700; color: var(--text-soft); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 3px; }
+    .k-item a { color: var(--teal); font-weight: 600; font-size: .92rem; }
+    .k-item span { font-size: .92rem; color: var(--text); }
+
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+    }
+    .form-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .fg { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+    .fg label { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .8rem; color: var(--text); }
+    .fg input, .fg select, .fg textarea {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: .9rem;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--text);
+      outline: none;
+      transition: border-color .18s, box-shadow .18s;
+      width: 100%;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(59,142,140,.1);
+    }
+    .fg textarea { resize: vertical; min-height: 110px; }
+    .form-submit { width: 100%; margin-top: 6px; justify-content: center; font-size: .95rem; padding: 14px; border-radius: var(--radius); }
+    .form-hint { font-size: .77rem; color: var(--text-soft); text-align: center; margin-top: 10px; }
+
+    @media (max-width: 768px) {
+      .kontakt-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-card { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="nav-logo-text">
+        <strong>B & H – Schulbegleitung</strong>
+        <span>Hannover</span>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Startseite</a>
+      <a href="leistungen.html">Leistungen</a>
+      <a href="ueber-uns.html">Über uns</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="kontakt.html" class="nav-contact active">Kontakt</a>
+    </div>
+    <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menü"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb"><a href="index.html">Startseite</a> › Kontakt</div>
+    <h1>Kontakt aufnehmen</h1>
+    <p>Ob Anfrage, Bewerbung oder eine einfache Frage – schreiben Sie uns, wir antworten schnell.</p>
+  </div>
+</div>
+
+<section class="section kontakt-section">
+  <div class="section-inner">
+    <div class="kontakt-grid">
+
+      <div class="kontakt-info">
+        <h2>So erreichen Sie uns</h2>
+        <p>Wir melden uns in der Regel innerhalb von 1–2 Werktagen. Für dringende Anliegen stehen wir auch telefonisch zur Verfügung.</p>
+        <div class="kontakt-details">
+          <div class="k-item">
+            <div class="k-icon" style="font-size:2.6rem;">✉</div>
+            <div>
+              <strong>E-Mail</strong>
+              <a href="mailto:hoheisel@bh-schulbegleitung-hannover.de">hoheisel@bh-schulbegleitung-hannover.de</a>
+            </div>
+          </div>
+          <div class="k-item">
+            <div class="k-icon" style="background: #dcfce7;">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="#16a34a" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </div>
+            <div>
+              <strong>WhatsApp & Telefon</strong>
+              <a href="https://wa.me/4915567432085" target="_blank" rel="noopener">+49 155 67 43 20 85</a>
+            </div>
+          </div>
+          <div class="k-item">
+            <div class="k-icon">📍</div>
+            <div>
+              <strong>Adresse</strong>
+              <span>Am Sandberge 1<br/>31303 Burgdorf-Ehlershausen</span>
+            </div>
+          </div>
+          <div class="k-item">
+            <div class="k-icon">🕐</div>
+            <div>
+              <strong>Erreichbarkeit</strong>
+              <span>Mo – Fr, 8:00 – 17:00 Uhr</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3>Nachricht schreiben</h3>
+        <form id="contactForm" action="https://formspree.io/f/xqejpkva" method="POST" onsubmit="handleSubmit(event)">
+          <input type="hidden" name="_replyto" value="lauridshoheisel@googlemail.com" />
+          <input type="hidden" name="_subject" value="Neue Anfrage – B & H Schulbegleitung Hannover" />
+          <div class="form-row">
+            <div class="fg">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" placeholder="Ihr Name" required />
+            </div>
+            <div class="fg">
+              <label for="email">E-Mail *</label>
+              <input type="email" id="email" name="email" placeholder="ihre@email.de" required />
+            </div>
+          </div>
+          <div class="fg">
+            <label for="telefon">Telefon (optional)</label>
+            <input type="tel" id="telefon" name="telefon" placeholder="+49 …" />
+          </div>
+          <div class="fg">
+            <label for="anliegen">Ich bin …</label>
+            <select id="anliegen" name="anliegen">
+              <option value="">Bitte wählen</option>
+              <option value="eltern">Elternteil / Erziehungsberechtigte:r</option>
+              <option value="bewerber">Ich möchte mich als Schulbegleiter:in bewerben</option>
+              <option value="schule">Ich komme von einer Schule oder Einrichtung</option>
+              <option value="sonstiges">Sonstiges</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="nachricht">Nachricht *</label>
+            <textarea id="nachricht" name="nachricht" placeholder="Beschreiben Sie kurz Ihr Anliegen …" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Nachricht absenden</button>
+          <p class="form-hint">Ihre Daten werden vertraulich behandelt und nicht weitergegeben.</p>
+        </form>
+        <div id="formSuccess" style="display:none;text-align:center;padding:32px 16px;">
+          <div style="font-size:2.5rem;margin-bottom:14px;">✓</div>
+          <h3 style="font-family:'Nunito',sans-serif;margin-bottom:8px;">Nachricht gesendet</h3>
+          <p style="font-size:.9rem;color:var(--text-soft)">Vielen Dank! Wir melden uns so bald wie möglich bei Ihnen.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <strong>Brackmann & Hogrefe GbR</strong>
+        <p>Professionelle Schulbegleitung in Hannover und Umgebung nach SGB VIII und SGB IX.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="leistungen.html">Leistungen</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Rechtliches</h5>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Brackmann & Hogrefe GbR</span>
+      <div><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('mobileBtn');
+  const nav = document.getElementById('navLinks');
+  btn.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+</script>
+</body>
+</html>

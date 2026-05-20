@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Über uns – B & H Schulbegleitung Hannover</title>
+  <meta name="description" content="Brackmann & Hogrefe GbR – Wer wir sind, was uns antreibt und wie wir Schulbegleitung in Hannover verstehen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&family=Nunito+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .intro-section { background: var(--bg); }
+    .intro-text { max-width: 720px; }
+    .intro-text h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 16px; }
+    .intro-text p {
+      font-size: .93rem;
+      color: var(--text-soft);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    /* ── Ansprechpartner ───────────────────────────── */
+    .ap-section { background: var(--bg); }
+    .ap-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      max-width: 760px;
+    }
+    .ap-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+    .ap-info h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 4px; }
+    .ap-role { font-size: .8rem; font-weight: 700; color: var(--teal-mid); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; display: block; }
+    .ap-info p { font-size: .9rem; color: var(--text-soft); line-height: 1.75; }
+
+    .werte-section { background: var(--white); }
+    .werte-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .wert {
+      padding: 28px 24px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      border-top: 4px solid var(--teal);
+    }
+    .wert h3 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
+    .wert p { font-size: .88rem; color: var(--text-soft); line-height: 1.7; }
+
+    @media (max-width: 768px) {
+      .intro-grid { grid-template-columns: 1fr; }
+      .intro-visual { position: static; aspect-ratio: unset; padding: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="nav-logo-text">
+        <strong>B & H – Schulbegleitung</strong>
+        <span>Hannover</span>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Startseite</a>
+      <a href="leistungen.html">Leistungen</a>
+      <a href="ueber-uns.html" class="active">Über uns</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="kontakt.html" class="nav-contact">Kontakt</a>
+    </div>
+    <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menü"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb"><a href="index.html">Startseite</a> › Über uns</div>
+    <h1>Über uns</h1>
+    <p>Wer wir sind und warum uns Schulbegleitung in Hannover am Herzen liegt.</p>
+  </div>
+</div>
+
+<!-- Intro -->
+<section class="section intro-section">
+  <div class="section-inner">
+    <div class="intro-text">
+        <span class="section-label">Brackmann & Hogrefe GbR</span>
+        <h2>Wir sind Alexander Brackmann und Leon Hogrefe</h2>
+        <p>Mit der Gründung von B & H haben wir uns einer Aufgabe verschrieben, die uns wirklich wichtig ist: Kindern mit besonderem Förderbedarf den Schulalltag zu ermöglichen – nicht trotz ihrer Herausforderungen, sondern mit der richtigen Begleitung an ihrer Seite.</p>
+        <p>Unser Sitz ist in Burgdorf-Ehlershausen. Wir sind in Hannover und der Region aktiv – nah dran, gut erreichbar und persönlich involviert.</p>
+        <p>Was uns von größeren Trägern unterscheidet: Bei uns gibt es keine langen Dienstwege. Familien, Schulen und Mitarbeitende haben immer direkten Kontakt zu uns – nicht zu einer Hotline oder einem Sachbearbeiter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Ansprechpartner -->
+<section class="section ap-section">
+  <div class="section-inner">
+    <span class="section-label">Ihr Ansprechpartner</span>
+    <h2 class="section-title">Ein Gesicht hinter der Begleitung</h2>
+    <p class="section-intro">Bei B & H sprechen Sie nicht mit einer Organisation – Sie sprechen mit Menschen, die wissen, wovon sie reden.</p>
+    <div class="ap-card">
+      <div class="ap-avatar">LH</div>
+      <div class="ap-info">
+        <h3>Laurids Hoheisel</h3>
+        <span class="ap-role">Recruiting & Betreuung der Schulbegleiter</span>
+        <p>Laurids Hoheisel verantwortet die Gewinnung und Betreuung der Schulbegleiter bei B & H. Mit über 10 Jahren Erfahrung als Lehrkraft bei einem anerkannten Leistungsträger nach SGB III bringt er fundiertes Fachwissen in der Arbeit mit Jugendlichen mit besonderem Förderbedarf mit. Er ist Ihr erster Ansprechpartner – für Bewerber ebenso wie für Fragen rund um die Begleitung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Werte -->
+<section class="section werte-section">
+  <div class="section-inner">
+    <span class="section-label">Unsere Haltung</span>
+    <h2 class="section-title">Was uns leitet</h2>
+    <p class="section-intro">Schulbegleitung ist mehr als eine Dienstleistung – sie ist eine Beziehung. Das prägt, wie wir arbeiten.</p>
+    <div class="werte-grid">
+      <div class="wert">
+        <h3>Das Kind im Mittelpunkt</h3>
+        <p>Kein Kind ist wie das andere. Unsere Begleitung orientiert sich immer an den individuellen Stärken, Bedürfnissen und dem Umfeld des Kindes – nicht an Standardprozessen.</p>
+      </div>
+      <div class="wert">
+        <h3>Verlässlichkeit als Grundlage</h3>
+        <p>Kinder mit Förderbedarf brauchen Stabilität. Deshalb legen wir großen Wert auf Kontinuität – dieselbe Begleitperson, verlässliche Abläufe, klare Kommunikation.</p>
+      </div>
+      <div class="wert">
+        <h3>Partnerschaft auf Augenhöhe</h3>
+        <p>Wir arbeiten mit Familien, nicht für sie. Eltern kennen ihr Kind am besten – dieses Wissen ist für uns unverzichtbar.</p>
+      </div>
+      <div class="wert">
+        <h3>Gute Arbeitsbedingungen schaffen</h3>
+        <p>Wer Kinder gut begleiten soll, muss selbst gut begleitet werden. Faire Bezahlung, klare Strukturen und echte Unterstützung für unser Team sind keine Extras – sie sind Voraussetzung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <strong>Brackmann & Hogrefe GbR</strong>
+        <p>Professionelle Schulbegleitung in Hannover und Umgebung nach SGB VIII und SGB IX.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="leistungen.html">Leistungen</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Rechtliches</h5>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Brackmann & Hogrefe GbR</span>
+      <div><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('mobileBtn');
+  const nav = document.getElementById('navLinks');
+  btn.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+</script>
+</body>
+</html>

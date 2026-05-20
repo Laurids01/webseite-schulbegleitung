@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leistungen – B & H Schulbegleitung Hannover</title>
+  <meta name="description" content="Qualifizierte und unqualifizierte Schulbegleitung in Hannover nach SGB VIII und SGB IX. Finanziert über Jugend- und Sozialamt." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&family=Nunito+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .leistung-block {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 48px;
+      align-items: start;
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .leistung-block:last-of-type { border-bottom: none; }
+    .leistung-meta { position: sticky; top: 80px; }
+    .leistung-tag {
+      display: inline-block;
+      background: var(--teal-light);
+      color: var(--teal);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: .75rem;
+      padding: 5px 12px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+    }
+    .leistung-meta h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+    .leistung-meta p { font-size: .9rem; color: var(--text-soft); line-height: 1.7; }
+    .leistung-content p {
+      font-size: .93rem;
+      color: var(--text-soft);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .leistung-content h3 {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 24px 0 8px;
+    }
+    .merkmal-liste {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 16px 0 24px;
+    }
+    .merkmal-liste li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .9rem;
+      color: var(--text-soft);
+    }
+    .merkmal-liste li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      background: var(--teal-mid);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+    .sgb-box {
+      background: var(--teal-light);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--teal);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 18px 20px;
+      margin-top: 20px;
+    }
+    .sgb-box strong {
+      display: block;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: .85rem;
+      color: var(--teal-dark);
+      margin-bottom: 4px;
+    }
+    .sgb-box p { font-size: .84rem; color: var(--text-soft); margin: 0; }
+
+    .antrag-section { background: var(--white); }
+    .antrag-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .antrag-step {
+      background: var(--white);
+      padding: 24px 20px;
+    }
+    .step-nr {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--teal);
+      display: block;
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+    .antrag-step h4 { font-size: .9rem; font-weight: 700; margin-bottom: 6px; }
+    .antrag-step p { font-size: .83rem; color: var(--text-soft); line-height: 1.6; }
+
+    /* ── FAQ ────────────────────────────────────────── */
+    .faq-section { background: var(--bg); }
+    .faq-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 16px;
+    }
+    .faq-card > strong {
+      display: block;
+      color: var(--teal-dark);
+      font-size: .97rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .faq-card p { font-size: .92rem; color: var(--text-soft); line-height: 1.7; margin: 0; }
+
+    @media (max-width: 768px) {
+      .leistung-block { grid-template-columns: 1fr; gap: 24px; }
+      .leistung-meta { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="nav-logo-text">
+        <strong>B & H – Schulbegleitung</strong>
+        <span>Hannover</span>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Startseite</a>
+      <a href="leistungen.html" class="active">Leistungen</a>
+      <a href="ueber-uns.html">Über uns</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="kontakt.html" class="nav-contact">Kontakt</a>
+    </div>
+    <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menü"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb"><a href="index.html">Startseite</a> › Leistungen</div>
+    <h1>Unsere Leistungen</h1>
+    <p>Schulbegleitung nach SGB VIII und SGB IX – individuell, verlässlich und eng abgestimmt mit allen Beteiligten.</p>
+  </div>
+</div>
+
+<!-- Antragsprozess -->
+<section class="section antrag-section" style="background: var(--bg);">
+  <div class="section-inner">
+    <span class="section-label">Wie es funktioniert</span>
+    <h2 class="section-title">Von der Anfrage zur Begleitung</h2>
+    <p class="section-intro">Der Weg zu einer Schulbegleitung klingt manchmal kompliziert – wir begleiten Sie durch jeden Schritt.</p>
+    <div class="antrag-steps">
+      <div class="antrag-step">
+        <span class="step-nr">01</span>
+        <h4>Erstkontakt</h4>
+        <p>Sie nehmen Kontakt zu uns auf. Wir klären in einem ersten Gespräch, ob und welche Form der Begleitung in Frage kommt.</p>
+      </div>
+      <div class="antrag-step">
+        <span class="step-nr">02</span>
+        <h4>Antragstellung</h4>
+        <p>Gemeinsam stellen wir den Antrag beim zuständigen Jugend- oder Sozialamt. Wir erklären, welche Unterlagen benötigt werden.</p>
+      </div>
+      <div class="antrag-step">
+        <span class="step-nr">03</span>
+        <h4>Bewilligung</h4>
+        <p>Nach Bewilligung durch den Kostenträger beginnen wir mit der Planung – wer begleitet, welche Schule, welcher Stundenrahmen.</p>
+      </div>
+      <div class="antrag-step">
+        <span class="step-nr">04</span>
+        <h4>Begleitung beginnt</h4>
+        <p>Die Begleitung startet. Wir bleiben im regelmäßigen Austausch mit Familie, Schule und Begleiter.</p>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 32px;">
+      <a href="kontakt.html" class="btn btn-primary">Jetzt Kontakt aufnehmen</a>
+    </div>
+  </div>
+</section>
+
+<!-- Leistungen -->
+<section class="section" style="background: var(--white);">
+  <div class="section-inner">
+
+    <div class="leistung-block">
+      <div class="leistung-meta">
+        <span class="leistung-tag">SGB VIII · SGB IX</span>
+        <h2>Qualifizierte Schulbegleitung</h2>
+        <p>Begleitung durch pädagogisch oder therapeutisch ausgebildete Fachkräfte für Kinder mit komplexeren Unterstützungsbedarfen.</p>
+      </div>
+      <div class="leistung-content">
+        <p>Die qualifizierte Schulbegleitung richtet sich an Kinder und Jugendliche, die aufgrund einer Behinderung, einer drohenden Behinderung oder eines besonderen Förderbedarfs eine spezialisierte Fachkraft benötigen, um am Schulunterricht teilnehmen zu können.</p>
+        <p>Unsere qualifizierten Begleiter bringen pädagogische, therapeutische oder sonderpädagogische Kenntnisse mit und können gezielt auf die spezifischen Herausforderungen des Kindes eingehen.</p>
+        <h3>Für wen geeignet</h3>
+        <ul class="merkmal-liste">
+          <li>Kinder mit Autismus-Spektrum-Störung oder ähnlichen Diagnosen</li>
+          <li>Kinder mit geistiger oder körperlicher Behinderung</li>
+          <li>Kinder mit erheblichen sozial-emotionalen Entwicklungsbedarfen</li>
+          <li>Kinder, bei denen ein Förderschulbesuch andernfalls notwendig wäre</li>
+        </ul>
+        <div class="sgb-box">
+          <strong>Rechtsgrundlage</strong>
+          <p>SGB VIII § 35a (seelische Behinderung) · SGB IX §§ 112 ff. (Eingliederungshilfe) · Kostenträger: Jugendamt oder Sozialamt je nach Diagnose</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="leistung-block">
+      <div class="leistung-meta">
+        <span class="leistung-tag">SGB VIII · SGB IX</span>
+        <h2>Unqualifizierte Schulbegleitung</h2>
+        <p>Praktische Alltagsbegleitung durch geschulte Personen – für Kinder, die im Schulalltag Orientierung und Unterstützung brauchen.</p>
+      </div>
+      <div class="leistung-content">
+        <p>Die unqualifizierte Schulbegleitung bietet eine verlässliche, strukturgebende Begleitung im Schulalltag. Schwerpunkt liegt auf der praktischen Unterstützung: Orientierung im Tagesablauf, Hilfe in Pausen, Unterstützung bei organisatorischen Aufgaben und die Funktion als feste Bezugsperson.</p>
+        <p>Diese Form der Begleitung erfordert keine formale pädagogische Ausbildung, setzt aber Einfühlungsvermögen, Verlässlichkeit und Bereitschaft zur Einarbeitung voraus. Unsere Begleiter werden von uns vorbereitet und begleitet.</p>
+        <h3>Typische Aufgaben</h3>
+        <ul class="merkmal-liste">
+          <li>Begleitung im Schulweg und im Schulgebäude</li>
+          <li>Unterstützung in Übergängen (Unterricht, Pausen, Ausflüge)</li>
+          <li>Strukturierung des Schultages und Unterstützung bei der Organisation</li>
+          <li>Kommunikation mit Lehrkräften auf Augenhöhe</li>
+          <li>Regelmäßiger Austausch mit Familie und unserem Team</li>
+        </ul>
+        <div class="sgb-box">
+          <strong>Rechtsgrundlage</strong>
+          <p>SGB VIII § 35a · SGB IX §§ 112 ff. · Antrag über das zuständige Jugend- oder Sozialamt · Wir unterstützen Sie beim Antragsprozess</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-section">
+  <div class="section-inner">
+    <span class="section-label">Fragen & Antworten</span>
+    <h2 class="section-title">Häufige Fragen von Eltern</h2>
+    <p class="section-intro">Wir nehmen Ihnen die Sorgen im Bürokratie-Dschungel. Hier sind die wichtigsten Antworten.</p>
+
+    <div class="faq-card">
+      <strong>Was kostet die Schulbegleitung für uns als Familie?</strong>
+      <p>Für Sie als Eltern entstehen <strong style="color:var(--text)">keine Kosten</strong>. Die Schulbegleitung ist eine Leistung der Eingliederungshilfe. Nach erfolgreicher Beantragung und Bewilligung durch den zuständigen Träger (Jugendamt oder Sozialamt) wird das Budget direkt und zu 100 % von der Behörde übernommen.</p>
+    </div>
+
+    <div class="faq-card">
+      <strong>In welchen Teilen Hannovers und Umgebung sind Sie aktiv?</strong>
+      <p>Wir decken die <strong style="color:var(--text)">gesamte Region Hannover</strong> ab. Dazu zählen neben dem Stadtgebiet Hannover alle umliegenden Gemeinden und Städte wie Springe, Burgdorf, Lehrte, Sehnde, Barsinghausen, Garbsen, Langenhagen, Ronnenberg, Neustadt, Wunstorf und Wedemark.</p>
+    </div>
+
+    <div class="faq-card">
+      <strong>Wie lange dauert es von der Anfrage bis zur echten Begleitung?</strong>
+      <p>Das hängt stark von der Bearbeitungszeit der zuständigen Behörde ab (meist einige Wochen). Sobald die Bewilligung vorliegt, können wir dank unseres Netzwerks oft sehr zeitnah eine passende Kraft für Ihr Kind bereitstellen.</p>
+    </div>
+
+    <div class="faq-card">
+      <strong>Welche Schule oder Schulform ist abgedeckt?</strong>
+      <p>Wir begleiten Kinder an allen Schulformen – von der Grundschule über Haupt- und Realschule bis hin zu Förderschulen und Gymnasien. Entscheidend ist nicht die Schulform, sondern der individuelle Bedarf Ihres Kindes.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <strong>Brackmann & Hogrefe GbR</strong>
+        <p>Professionelle Schulbegleitung in Hannover und Umgebung nach SGB VIII und SGB IX.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="leistungen.html">Leistungen</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Rechtliches</h5>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Brackmann & Hogrefe GbR</span>
+      <div><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('mobileBtn');
+  const nav = document.getElementById('navLinks');
+  btn.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+</script>
+</body>
+</html>
