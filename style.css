@@ -68,11 +68,11 @@ img { display: block; max-width: 100%; }
   background: rgba(255,255,255,.92);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(12px);
+  padding: 0 28px;
 }
 .nav-inner {
   max-width: var(--max-width);
   margin: auto;
-  padding: 0 28px;
   height: 68px;
   display: flex;
   align-items: center;

@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     .intro-section { background: var(--bg); }
-    .intro-text { max-width: 720px; }
+    .intro-text { max-width: 100%; }
     .intro-text h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 16px; }
     .intro-text p {
       font-size: .93rem;
@@ -27,7 +27,7 @@
       display: flex;
       gap: 32px;
       align-items: flex-start;
-      max-width: 760px;
+      width: 100%;
     }
     .ap-avatar {
       width: 72px;
@@ -63,9 +63,90 @@
     .wert h3 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
     .wert p { font-size: .88rem; color: var(--text-soft); line-height: 1.7; }
 
+    /* ── Team Grid ─────────────────────────────────── */
+    .team-section { background: var(--white); }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      width: 100%;
+    }
+    .team-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .team-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+    .team-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .team-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .team-photo-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      height: 100%;
+    }
+    .team-photo-initials {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 2.4rem;
+      color: var(--teal);
+      line-height: 1;
+    }
+    .team-photo svg {
+      width: 64px;
+      height: 64px;
+      color: var(--teal);
+      opacity: .35;
+    }
+    .team-info {
+      padding: 18px 20px 20px;
+    }
+    .team-info h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .team-role {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--teal);
+      background: var(--teal-light);
+      padding: 3px 10px;
+      border-radius: 4px;
+      letter-spacing: .04em;
+    }
+
     @media (max-width: 768px) {
       .intro-grid { grid-template-columns: 1fr; }
       .intro-visual { position: static; aspect-ratio: unset; padding: 40px; }
+      .team-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    }
+    @media (max-width: 480px) {
+      .team-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -84,9 +165,9 @@
     </a>
     <div class="nav-links" id="navLinks">
       <a href="index.html">Startseite</a>
+      <a href="jobs.html">Jobs</a>
       <a href="leistungen.html">Leistungen</a>
       <a href="ueber-uns.html" class="active">Über uns</a>
-      <a href="jobs.html">Jobs</a>
       <a href="kontakt.html" class="nav-contact">Kontakt</a>
     </div>
     <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menü"><span></span><span></span><span></span></button>
@@ -101,32 +182,99 @@
   </div>
 </div>
 
+<!-- Team -->
+<section class="section team-section">
+  <div class="section-inner">
+    <span class="section-label">Das Team</span>
+    <h2 class="section-title">Menschen hinter B & H</h2>
+    <p class="section-intro">Bei uns sprechen Sie nicht mit einer Organisation – Sie sprechen mit Menschen, die wissen, wovon sie reden.</p>
+    <div class="team-grid">
+
+      <!-- Alexander Brackmann -->
+      <div class="team-card">
+        <div class="team-photo">
+          <!-- Foto ersetzen: <img src="fotos/alexander-brackmann.jpg" alt="Alexander Brackmann"> -->
+          <div class="team-photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="team-photo-initials">AB</span>
+          </div>
+        </div>
+        <div class="team-info">
+          <h3>Alexander Brackmann</h3>
+          <span class="team-role">Gründer & Verwalter</span>
+        </div>
+      </div>
+
+      <!-- Laurids Hoheisel -->
+      <div class="team-card">
+        <div class="team-photo">
+          <!-- Foto ersetzen: <img src="fotos/laurids-hoheisel.jpg" alt="Laurids Hoheisel"> -->
+          <div class="team-photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="team-photo-initials">LH</span>
+          </div>
+        </div>
+        <div class="team-info">
+          <h3>Laurids Hoheisel</h3>
+          <span class="team-role">Recruiter & Koordinator</span>
+        </div>
+      </div>
+
+      <!-- Leon Hogrefe -->
+      <div class="team-card">
+        <div class="team-photo">
+          <!-- Foto ersetzen: <img src="fotos/leon-hogrefe.jpg" alt="Leon Hogrefe"> -->
+          <div class="team-photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="team-photo-initials">LHo</span>
+          </div>
+        </div>
+        <div class="team-info">
+          <h3>Leon Hogrefe</h3>
+          <span class="team-role">Gründer & Vertretungskoordinator</span>
+        </div>
+      </div>
+
+      <!-- Nora Brackmann -->
+      <div class="team-card">
+        <div class="team-photo">
+          <!-- Foto ersetzen: <img src="fotos/nora-brackmann.jpg" alt="Nora Brackmann"> -->
+          <div class="team-photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="team-photo-initials">NB</span>
+          </div>
+        </div>
+        <div class="team-info">
+          <h3>Nora Brackmann</h3>
+          <span class="team-role">Verwalterin</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Hervorgehobener Ansprechpartner -->
+    <div style="margin-top: 112px;">
+      <span class="section-label">Ihr direkter Ansprechpartner</span>
+      <h2 class="section-title">Laurids Hoheisel</h2>
+    </div>
+    <div class="ap-card" style="margin-top: 24px;">
+      <div class="ap-info">
+        <p>Laurids Hoheisel verantwortet die Gewinnung und Betreuung der Schulbegleiter bei B & H. Als Lehrkraft für Sport und Theologie und mit über 10 Jahren Erfahrung bei einem anerkannten Leistungsträger nach SGB III bringt er fundiertes Fachwissen in der Arbeit mit Jugendlichen mit besonderem Förderbedarf mit. Durch seine langjährige Tätigkeit als Rehasporttrainer in den Bereichen Orthopädie und psychische Gesundheit kennt er die besonderen Anforderungen im Umgang mit Menschen, die Unterstützung brauchen – körperlich wie emotional. Er ist Ihr erster Ansprechpartner – für Bewerber ebenso wie für Fragen rund um die Begleitung.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- Intro -->
 <section class="section intro-section">
   <div class="section-inner">
     <div class="intro-text">
         <span class="section-label">Brackmann & Hogrefe GbR</span>
-        <h2>Wir sind Alexander Brackmann und Leon Hogrefe</h2>
+        <h2>Schulbegleitung auf Augenhöhe</h2>
         <p>Mit der Gründung von B & H haben wir uns einer Aufgabe verschrieben, die uns wirklich wichtig ist: Kindern mit besonderem Förderbedarf den Schulalltag zu ermöglichen – nicht trotz ihrer Herausforderungen, sondern mit der richtigen Begleitung an ihrer Seite.</p>
         <p>Unser Sitz ist in Burgdorf-Ehlershausen. Wir sind in Hannover und der Region aktiv – nah dran, gut erreichbar und persönlich involviert.</p>
         <p>Was uns von größeren Trägern unterscheidet: Bei uns gibt es keine langen Dienstwege. Familien, Schulen und Mitarbeitende haben immer direkten Kontakt zu uns – nicht zu einer Hotline oder einem Sachbearbeiter.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Ansprechpartner -->
-<section class="section ap-section">
-  <div class="section-inner">
-    <span class="section-label">Ihr Ansprechpartner</span>
-    <h2 class="section-title">Ein Gesicht hinter der Begleitung</h2>
-    <p class="section-intro">Bei B & H sprechen Sie nicht mit einer Organisation – Sie sprechen mit Menschen, die wissen, wovon sie reden.</p>
-    <div class="ap-card">
-      <div class="ap-avatar">LH</div>
-      <div class="ap-info">
-        <h3>Laurids Hoheisel</h3>
-        <span class="ap-role">Recruiting & Betreuung der Schulbegleiter</span>
-        <p>Laurids Hoheisel verantwortet die Gewinnung und Betreuung der Schulbegleiter bei B & H. Mit über 10 Jahren Erfahrung als Lehrkraft bei einem anerkannten Leistungsträger nach SGB III bringt er fundiertes Fachwissen in der Arbeit mit Jugendlichen mit besonderem Förderbedarf mit. Er ist Ihr erster Ansprechpartner – für Bewerber ebenso wie für Fragen rund um die Begleitung.</p>
-      </div>
     </div>
   </div>
 </section>
