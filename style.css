@@ -41,7 +41,7 @@
   --max-width:   1080px;
 }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
 
 body {
   font-family: 'Inter', 'Segoe UI', sans-serif;
@@ -339,6 +339,7 @@ footer {
 
 /* ── Responsive ──────────────────────────────────── */
 @media (max-width: 768px) {
+  .nav { padding: 0 20px; }
   .nav-links { display: none; }
   .nav-mobile-btn { display: flex; }
   .nav-links.open {
@@ -361,5 +362,6 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .nav-inner { padding: 0 20px; }
+  .nav { padding: 0 16px; }
+  .section { padding: 44px 16px; }
 }
