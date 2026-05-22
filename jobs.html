@@ -533,9 +533,9 @@
 <!-- Stellenangebote -->
 <section class="section stellen-section">
   <div class="section-inner">
-    <span class="section-label">Offene Stellen</span>
-    <h2 class="section-title">Aktuelle Stellenangebote</h2>
-    <p class="section-intro">Beide Stellen sind in Hannover und Umgebung zu besetzen. Teilzeit und Vollzeit möglich – wir richten uns nach Ihrer Lebenssituation.</p>
+    <span class="section-label">Wir stellen ein</span>
+    <h2 class="section-title">Wen wir suchen</h2>
+    <p class="section-intro">Wir bauen unseren Begleiterpool in Hannover und Umgebung aktiv aus. Da jeder Einsatz individuell abgestimmt wird, variiert der Start je nach Bedarf und Einsatzmöglichkeit – Teilzeit und Vollzeit möglich.</p>
 
     <!-- Stelle 1 -->
     <div class="stelle">
@@ -544,11 +544,11 @@
           <div class="stelle-badges">
             <span class="badge badge-teal">Vollzeit</span>
             <span class="badge badge-teal">Teilzeit</span>
-            <span class="badge badge-orange">Hannover</span>
+            <span class="badge badge-orange">Hannover & Region</span>
             <span class="badge badge-violet">Unbefristet</span>
+            <span class="badge badge-amber">24 €/Std.</span>
           </div>
           <h3>Qualifizierte Schulbegleitung (m/w/d)</h3>
-          <span class="stelle-meta">Brackmann & Hogrefe GbR · ab sofort · 24 €/Std.</span>
         </div>
         <a href="#schnellbewerbung" class="btn btn-primary">Jetzt bewerben</a>
       </div>
@@ -585,11 +585,11 @@
           <div class="stelle-badges">
             <span class="badge badge-teal">Vollzeit</span>
             <span class="badge badge-teal">Teilzeit</span>
-            <span class="badge badge-orange">Hannover</span>
+            <span class="badge badge-orange">Hannover & Region</span>
             <span class="badge badge-violet">Unbefristet</span>
+            <span class="badge badge-amber">19 €/Std.</span>
           </div>
           <h3>Unqualifizierte Schulbegleitung (m/w/d)</h3>
-          <span class="stelle-meta">Brackmann & Hogrefe GbR · ab sofort · 19 €/Std.</span>
         </div>
         <a href="#schnellbewerbung" class="btn btn-primary">Jetzt bewerben</a>
       </div>
@@ -699,6 +699,9 @@
     currentRate = rate;
     document.querySelectorAll('.calc-toggle-btn').forEach(b => b.classList.remove('active'));
     clickedBtn.classList.add('active');
+    document.getElementById('extraWeihnacht').innerHTML =
+      '<span class="calc-extra-icon">🎄</span>' +
+      (rate === 24 ? 'bis 1.000 € Weihnachtsgeld' : 'bis 500 € Weihnachtsgeld');
     updateCalc();
   }
 
