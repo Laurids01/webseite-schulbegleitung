@@ -203,6 +203,17 @@
     .calc-extra.locked { opacity: .35; filter: grayscale(.4); }
     .calc-extra-icon { font-size: 1rem; }
 
+    /* ── Sprachumschalter ───────────────────────────── */
+    .quiz-lang-bar { display:flex; justify-content:flex-end; gap:6px; margin-bottom:20px; }
+    .lang-btn {
+      background: none; border: 1.5px solid var(--border);
+      border-radius: 8px; padding: 4px 10px; cursor: pointer;
+      font-size: 1.15rem; line-height: 1; opacity: .45;
+      transition: opacity .2s, border-color .2s;
+    }
+    .lang-btn.active { opacity: 1; border-color: var(--teal); }
+    .lang-btn:hover { opacity: .8; }
+
     /* ── Schnellbewerbung ───────────────────────────── */
     .bewerbung-section { background: var(--teal-bg); }
     .quiz-wrapper {
@@ -480,56 +491,62 @@
       </div>
       <div class="quiz-body">
 
+        <!-- Sprachumschalter -->
+        <div class="quiz-lang-bar">
+          <button class="lang-btn active" id="langDe" onclick="setLang('de')" title="Deutsch">🇩🇪</button>
+          <button class="lang-btn" id="langEn" onclick="setLang('en')" title="English">🇬🇧</button>
+        </div>
+
         <!-- Schritt 1: Qualifikations-Check -->
         <div class="quiz-step active" id="qStep1">
-          <p class="quiz-step-label">Schritt 1 von 3</p>
+          <p class="quiz-step-label" data-i18n="step1label">Schritt 1 von 3</p>
 
           <!-- Phase A: Qualifikationsart wählen -->
           <div id="qualPhaseA">
-            <p class="quiz-question">Was bringen Sie mit?</p>
-            <p style="font-size:.84rem;color:var(--text-soft);margin-bottom:16px;line-height:1.6;">Wählen Sie Ihre Qualifikationsart – wir zeigen Ihnen dann alle Abschlüsse, die anerkannt werden. Viele wissen nicht, dass sie bereits qualifiziert sind.</p>
+            <p class="quiz-question" data-i18n="phaseATitle">Was bringen Sie mit?</p>
+            <p data-i18n="phaseASubtitle" style="font-size:.84rem;color:var(--text-soft);margin-bottom:16px;line-height:1.6;">Wählen Sie Ihre Qualifikationsart – wir zeigen Ihnen dann alle Abschlüsse, die anerkannt werden. Viele wissen nicht, dass sie bereits qualifiziert sind.</p>
             <div class="quiz-options">
               <button class="quiz-option" onclick="selectGroup('hochschule', this)">
                 <span class="quiz-option-icon">🎓</span>
-                Hochschulabschluss (Bachelor, Master oder Diplom)
+                <span data-i18n="grpHochschule">Hochschulabschluss (Bachelor, Master oder Diplom)</span>
               </button>
               <button class="quiz-option" onclick="selectGroup('ausbildung', this)">
                 <span class="quiz-option-icon">📜</span>
-                Berufsausbildung (staatlich anerkannt)
+                <span data-i18n="grpAusbildung">Berufsausbildung (staatlich anerkannt)</span>
               </button>
               <button class="quiz-option" onclick="selectGroup('weiterbildung', this)">
                 <span class="quiz-option-icon">📚</span>
-                Weiterbildung oder Kurs
+                <span data-i18n="grpWeiterbildung">Weiterbildung oder Kurs</span>
               </button>
               <button class="quiz-option" onclick="selectGroup('studium', this)">
                 <span class="quiz-option-icon">✏️</span>
-                Ich studiere noch (ab 3. Semester)
+                <span data-i18n="grpStudium">Ich studiere noch (ab 3. Semester)</span>
               </button>
               <button class="quiz-option" onclick="selectGroup('erfahrung', this)">
                 <span class="quiz-option-icon">💼</span>
-                Nur Berufserfahrung (keine formale Ausbildung)
+                <span data-i18n="grpErfahrung">Nur Berufserfahrung (keine formale Ausbildung)</span>
               </button>
             </div>
             <div class="quiz-nav">
-              <button class="btn btn-primary" id="nextBtn1A" onclick="advanceToPhaseB()" style="opacity:.4;pointer-events:none">Weiter →</button>
+              <button class="btn btn-primary" id="nextBtn1A" onclick="advanceToPhaseB()" style="opacity:.4;pointer-events:none" data-i18n="btnWeiter">Weiter →</button>
             </div>
           </div>
 
           <!-- Phase B: Spezifischen Abschluss wählen -->
           <div id="qualPhaseB" style="display:none;">
             <p class="quiz-question" id="qualPhaseBTitle"></p>
-            <p style="font-size:.84rem;color:var(--text-soft);margin-bottom:12px;line-height:1.6;">Wählen Sie Ihren genauen Abschluss. Das Badge zeigt Ihre Kategorie.</p>
+            <p data-i18n="phaseBSubtitle" style="font-size:.84rem;color:var(--text-soft);margin-bottom:12px;line-height:1.6;">Wählen Sie Ihren genauen Abschluss. Das Badge zeigt Ihre Kategorie.</p>
             <div class="qual-legend" style="margin-bottom:10px;">
-              <div class="qual-legend-item"><span class="qual-legend-dot" style="background:#6ee7b7;"></span>Kat. 1 – Direkt qualifiziert</div>
-              <div class="qual-legend-item"><span class="qual-legend-dot" style="background:#fde047;"></span>Kat. 2 – + 2 Jahre Erfahrung</div>
-              <div class="qual-legend-item"><span class="qual-legend-dot" style="background:#fed7aa;"></span>Kat. 3 – + Qualifizierungskurs</div>
-              <div class="qual-legend-item"><span class="qual-legend-dot" style="background:#93c5fd;"></span>Kat. 4 – Einzelfall</div>
+              <div class="qual-legend-item"><span class="qual-legend-dot" style="background:#6ee7b7;"></span><span data-i18n="leg1">Kat. 1 – Direkt qualifiziert</span></div>
+              <div class="qual-legend-item"><span class="qual-legend-dot" style="background:#fde047;"></span><span data-i18n="leg2">Kat. 2 – + 2 Jahre Erfahrung</span></div>
+              <div class="qual-legend-item"><span class="qual-legend-dot" style="background:#fed7aa;"></span><span data-i18n="leg3">Kat. 3 – + Qualifizierungskurs</span></div>
+              <div class="qual-legend-item"><span class="qual-legend-dot" style="background:#93c5fd;"></span><span data-i18n="leg4">Kat. 4 – Einzelfall</span></div>
             </div>
             <div class="qual-list" id="qualList"></div>
             <div id="qualResult" style="display:none;"></div>
             <div class="quiz-nav">
-              <button class="quiz-back" onclick="showQualPhaseA()">← Zurück</button>
-              <button class="btn btn-primary" id="nextBtn1" onclick="nextStep(1)" style="opacity:.4;pointer-events:none">Weiter →</button>
+              <button class="quiz-back" onclick="showQualPhaseA()" data-i18n="btnZurueck">← Zurück</button>
+              <button class="btn btn-primary" id="nextBtn1" onclick="nextStep(1)" style="opacity:.4;pointer-events:none" data-i18n="btnWeiter">Weiter →</button>
             </div>
           </div>
 
@@ -537,53 +554,53 @@
 
         <!-- Schritt 2: Stunden -->
         <div class="quiz-step" id="qStep2">
-          <p class="quiz-step-label">Schritt 2 von 3</p>
-          <p class="quiz-question">Wie viele Stunden pro Woche wären Sie verfügbar?</p>
+          <p class="quiz-step-label" data-i18n="step2label">Schritt 2 von 3</p>
+          <p class="quiz-question" data-i18n="step2title">Wie viele Stunden pro Woche wären Sie verfügbar?</p>
           <div class="quiz-options">
             <button class="quiz-option" onclick="pickOption(this, 'hours', 'bis 20 Stunden')">
-              Bis zu 20 Stunden – Teilzeit
+              <span data-i18n="step2opt1">Bis zu 20 Stunden – Teilzeit</span>
             </button>
             <button class="quiz-option" onclick="pickOption(this, 'hours', '20–30 Stunden')">
-              20–30 Stunden – flexible Teilzeit
+              <span data-i18n="step2opt2">20–30 Stunden – flexible Teilzeit</span>
             </button>
             <button class="quiz-option" onclick="pickOption(this, 'hours', 'ab 30 Stunden')">
-              30+ Stunden – Vollzeit oder nahezu Vollzeit
+              <span data-i18n="step2opt3">30+ Stunden – Vollzeit oder nahezu Vollzeit</span>
             </button>
           </div>
           <div class="quiz-nav">
-            <button class="quiz-back" onclick="prevStep(2)">← Zurück</button>
-            <button class="btn btn-primary" onclick="nextStep(2)" id="nextBtn2" style="opacity:.4;pointer-events:none">Weiter →</button>
+            <button class="quiz-back" onclick="prevStep(2)" data-i18n="btnZurueck">← Zurück</button>
+            <button class="btn btn-primary" onclick="nextStep(2)" id="nextBtn2" style="opacity:.4;pointer-events:none" data-i18n="btnWeiter">Weiter →</button>
           </div>
         </div>
 
         <!-- Schritt 3: Start -->
         <div class="quiz-step" id="qStep3">
-          <p class="quiz-step-label">Schritt 3 von 3</p>
-          <p class="quiz-question">Wann könnten Sie frühestens beginnen?</p>
+          <p class="quiz-step-label" data-i18n="step3label">Schritt 3 von 3</p>
+          <p class="quiz-question" data-i18n="step3title">Wann könnten Sie frühestens beginnen?</p>
           <div class="quiz-options">
             <button class="quiz-option" onclick="pickOption(this, 'start', 'sofort')">
               <span class="quiz-option-icon">🚀</span>
-              Ab sofort oder kurzfristig
+              <span data-i18n="step3opt1">Ab sofort oder kurzfristig</span>
             </button>
             <button class="quiz-option" onclick="pickOption(this, 'start', 'nächsten Monat')">
               <span class="quiz-option-icon">📅</span>
-              Im nächsten Monat
+              <span data-i18n="step3opt2">Im nächsten Monat</span>
             </button>
             <button class="quiz-option" onclick="pickOption(this, 'start', 'flexibel')">
               <span class="quiz-option-icon">💬</span>
-              Noch offen – gerne besprechen
+              <span data-i18n="step3opt3">Noch offen – gerne besprechen</span>
             </button>
           </div>
           <div class="quiz-nav">
-            <button class="quiz-back" onclick="prevStep(3)">← Zurück</button>
-            <button class="btn btn-primary" onclick="nextStep(3)" id="nextBtn3" style="opacity:.4;pointer-events:none">Zum Formular →</button>
+            <button class="quiz-back" onclick="prevStep(3)" data-i18n="btnZurueck">← Zurück</button>
+            <button class="btn btn-primary" onclick="nextStep(3)" id="nextBtn3" style="opacity:.4;pointer-events:none" data-i18n="btnFormular">Zum Formular →</button>
           </div>
         </div>
 
         <!-- Schritt 4: Kontaktformular -->
         <div class="quiz-step" id="qStep4">
-          <p class="quiz-step-label">Fast geschafft!</p>
-          <p class="quiz-question">Ihre Kontaktdaten – wir melden uns innerhalb von 24 Stunden.</p>
+          <p class="quiz-step-label" data-i18n="step4label">Fast geschafft!</p>
+          <p class="quiz-question" data-i18n="step4title">Ihre Kontaktdaten – wir melden uns innerhalb von 24 Stunden.</p>
           <div class="quiz-summary" id="quizSummary"></div>
 
           <form class="quiz-form" action="https://formspree.io/f/xqejpkva" method="POST">
@@ -593,29 +610,29 @@
             <input type="hidden" name="Starttermin" id="f_start" value="">
             <div class="form-row">
               <div>
-                <label for="f_name">Ihr Name *</label>
+                <label for="f_name" data-i18n="labelName">Ihr Name *</label>
                 <input type="text" id="f_name" name="Name" placeholder="Max Mustermann" required>
               </div>
               <div>
-                <label for="f_phone">Telefon *</label>
+                <label for="f_phone" data-i18n="labelPhone">Telefon *</label>
                 <input type="tel" id="f_phone" name="Telefon" placeholder="+49 …" required>
               </div>
             </div>
             <div>
-              <label for="f_email">E-Mail-Adresse *</label>
+              <label for="f_email" data-i18n="labelEmail">E-Mail-Adresse *</label>
               <input type="email" id="f_email" name="E-Mail" placeholder="ihre@email.de" required>
             </div>
             <div>
-              <label for="f_message">Kurze Nachricht (optional)</label>
-              <input type="text" id="f_message" name="Nachricht" placeholder="z.B. Erfahrungen, Fragen, Wünsche …">
+              <label for="f_message" data-i18n="labelMessage">Kurze Nachricht (optional)</label>
+              <input type="text" id="f_message" name="Nachricht" data-i18n-placeholder="placeholderMessage" placeholder="z.B. Erfahrungen, Fragen, Wünsche …">
             </div>
             <label class="privacy">
               <input type="checkbox" name="Datenschutz" required>
-              <span>Ich habe die <a href="datenschutz.html" style="color:var(--teal);">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Kontaktaufnahme zu.</span>
+              <span data-i18n="privacyText">Ich habe die <a href="datenschutz.html" style="color:var(--teal);">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Kontaktaufnahme zu.</span>
             </label>
             <div class="quiz-nav" style="margin-top:8px;">
-              <button type="button" class="quiz-back" onclick="prevStep(4)">← Zurück</button>
-              <button type="submit" class="btn btn-primary">Jetzt bewerben ✓</button>
+              <button type="button" class="quiz-back" onclick="prevStep(4)" data-i18n="btnZurueck">← Zurück</button>
+              <button type="submit" class="btn btn-primary" data-i18n="btnSubmit">Jetzt bewerben ✓</button>
             </div>
           </form>
         </div>
@@ -764,6 +781,162 @@
   // Initialisierung
   updateCalc();
 
+  /* ── Übersetzungen ──────────────────────────────── */
+  let lang = 'de';
+  const translations = {
+    de: {
+      step1label: 'Schritt 1 von 3', step2label: 'Schritt 2 von 3',
+      step3label: 'Schritt 3 von 3', step4label: 'Fast geschafft!',
+      phaseATitle: 'Was bringen Sie mit?',
+      phaseASubtitle: 'Wählen Sie Ihre Qualifikationsart – wir zeigen Ihnen dann alle Abschlüsse, die anerkannt werden. Viele wissen nicht, dass sie bereits qualifiziert sind.',
+      grpHochschule: 'Hochschulabschluss (Bachelor, Master oder Diplom)',
+      grpAusbildung: 'Berufsausbildung (staatlich anerkannt)',
+      grpWeiterbildung: 'Weiterbildung oder Kurs',
+      grpStudium: 'Ich studiere noch (ab 3. Semester)',
+      grpErfahrung: 'Nur Berufserfahrung (keine formale Ausbildung)',
+      btnWeiter: 'Weiter →', btnZurueck: '← Zurück', btnFormular: 'Zum Formular →',
+      btnSubmit: 'Jetzt bewerben ✓',
+      phaseBSubtitle: 'Wählen Sie Ihren genauen Abschluss. Das Badge zeigt Ihre Kategorie.',
+      leg1: 'Kat. 1 – Direkt qualifiziert', leg2: 'Kat. 2 – + 2 Jahre Erfahrung',
+      leg3: 'Kat. 3 – + Qualifizierungskurs', leg4: 'Kat. 4 – Einzelfall',
+      cat1hd: '✅ Direkt qualifiziert – keine weiteren Voraussetzungen',
+      cat2hd: '✅ Qualifiziert – zusätzlich 2 Jahre Berufserfahrung erforderlich',
+      cat3hd: '⚡ Qualifizierbar – Qualifizierungskurs oder 2 Jahre Erfahrung erforderlich',
+      cat4hd: 'ℹ️ Einzelfallentscheidung',
+      res1title: '✅ Sie sind direkt qualifiziert!',
+      res1body: 'Ihr Abschluss wird ohne weitere Voraussetzungen anerkannt. Wir freuen uns auf Ihre Bewerbung!',
+      res2title: '✅ Sie sind qualifiziert!', res2pre: 'Zusätzliche Voraussetzung: ',
+      res3title: '⚡ Potenziell qualifizierbar', res3pre: 'Zusätzlich erforderlich: ',
+      res3post: 'Trotzdem gerne bewerben – wir prüfen Ihre Situation persönlich.',
+      res4title: 'ℹ️ Einzelfallentscheidung', res4pre: 'Voraussetzungen: ',
+      res4post: 'Bitte bewerben Sie sich – wir prüfen Ihre Qualifikation individuell.',
+      gt: { hochschule: 'Welchen Hochschulabschluss haben Sie?', ausbildung: 'Welche Berufsausbildung haben Sie?',
+            weiterbildung: 'Welche Weiterbildung haben Sie?', studium: 'In welchem Studiengang studieren Sie?',
+            erfahrung: 'Was trifft auf Sie zu?' },
+      step2title: 'Wie viele Stunden pro Woche wären Sie verfügbar?',
+      step2opt1: 'Bis zu 20 Stunden – Teilzeit',
+      step2opt2: '20–30 Stunden – flexible Teilzeit',
+      step2opt3: '30+ Stunden – Vollzeit oder nahezu Vollzeit',
+      step3title: 'Wann könnten Sie frühestens beginnen?',
+      step3opt1: 'Ab sofort oder kurzfristig', step3opt2: 'Im nächsten Monat',
+      step3opt3: 'Noch offen – gerne besprechen',
+      step4title: 'Ihre Kontaktdaten – wir melden uns innerhalb von 24 Stunden.',
+      labelName: 'Ihr Name *', labelPhone: 'Telefon *', labelEmail: 'E-Mail-Adresse *',
+      labelMessage: 'Kurze Nachricht (optional)',
+      placeholderMessage: 'z.B. Erfahrungen, Fragen, Wünsche …',
+      privacyText: 'Ich habe die <a href="datenschutz.html" style="color:var(--teal);">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Kontaktaufnahme zu.',
+      qualNote: '',
+      summaryLabel: 'Ihre Angaben:',
+      summaryStart: 'Start:',
+      hoursMap: {}, startMap: {}, reqMap: {}, infoMap: {},
+    },
+    en: {
+      step1label: 'Step 1 of 3', step2label: 'Step 2 of 3',
+      step3label: 'Step 3 of 3', step4label: 'Almost done!',
+      phaseATitle: 'What do you bring?',
+      phaseASubtitle: 'Select your qualification type – we\'ll then show you all recognised credentials. Many people don\'t know they already qualify.',
+      grpHochschule: 'University degree (Bachelor\'s, Master\'s or Diploma)',
+      grpAusbildung: 'Vocational training (state-recognised)',
+      grpWeiterbildung: 'Further education or course',
+      grpStudium: 'I\'m still studying (from 3rd semester onwards)',
+      grpErfahrung: 'Work experience only (no formal qualification)',
+      btnWeiter: 'Next →', btnZurueck: '← Back', btnFormular: 'To the form →',
+      btnSubmit: 'Apply now ✓',
+      phaseBSubtitle: 'Select your exact qualification. The badge shows your category.',
+      leg1: 'Cat. 1 – Directly qualified', leg2: 'Cat. 2 – + 2 years experience',
+      leg3: 'Cat. 3 – + qualification course', leg4: 'Cat. 4 – Individual case',
+      cat1hd: '✅ Directly qualified – no further requirements',
+      cat2hd: '✅ Qualified – additionally 2 years of professional experience required',
+      cat3hd: '⚡ Potentially qualifiable – qualification course or 2 years experience required',
+      cat4hd: 'ℹ️ Individual case decision',
+      res1title: '✅ You are directly qualified!',
+      res1body: 'Your qualification is recognised without any further requirements. We look forward to your application!',
+      res2title: '✅ You are qualified!', res2pre: 'Additional requirement: ',
+      res3title: '⚡ Potentially qualifiable', res3pre: 'Additionally required: ',
+      res3post: 'Please apply anyway – we will assess your situation personally.',
+      res4title: 'ℹ️ Individual case decision', res4pre: 'Requirements: ',
+      res4post: 'Please apply – we will assess your qualification individually.',
+      gt: { hochschule: 'Which university degree do you have?', ausbildung: 'Which vocational training do you have?',
+            weiterbildung: 'Which further education do you have?', studium: 'Which degree programme are you studying?',
+            erfahrung: 'Which applies to you?' },
+      step2title: 'How many hours per week would you be available?',
+      step2opt1: 'Up to 20 hours – part-time',
+      step2opt2: '20–30 hours – flexible part-time',
+      step2opt3: '30+ hours – full-time or near full-time',
+      step3title: 'When could you start at the earliest?',
+      step3opt1: 'Immediately or at short notice', step3opt2: 'Next month',
+      step3opt3: 'Still open – happy to discuss',
+      step4title: 'Your contact details – we\'ll get back to you within 24 hours.',
+      labelName: 'Your name *', labelPhone: 'Phone *', labelEmail: 'Email address *',
+      labelMessage: 'Short message (optional)',
+      placeholderMessage: 'e.g. experience, questions, preferences …',
+      privacyText: 'I have read the <a href="datenschutz.html" style="color:var(--teal);">privacy policy</a> and consent to the processing of my data for contact purposes.',
+      qualNote: 'Note: Qualification names are official German professional titles.',
+      summaryLabel: 'Your details:',
+      summaryStart: 'Start:',
+      hoursMap: {
+        'bis 20 Stunden': 'up to 20 hours',
+        '20–30 Stunden': '20–30 hours',
+        'ab 30 Stunden': '30+ hours',
+      },
+      startMap: {
+        'sofort': 'immediately or at short notice',
+        'nächsten Monat': 'next month',
+        'flexibel': 'still open – happy to discuss',
+      },
+      reqMap: {
+        'insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)':
+          'A total of 2 years of professional experience working with families, children and young people (at least 50% of a full-time position)',
+        '1 Jahr Berufserfahrung (nur SGB IX, körperliche Behinderung)':
+          '1 year of professional experience (SGB IX only – physical disability)',
+        'Deutschkenntnisse auf dem B2-Niveau':
+          'German language skills at B2 level',
+        'Deutschkenntnisse auf dem B2-Niveau UND insgesamt 1 Jahr Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)':
+          'German language skills at B2 level AND a total of 1 year of professional experience working with families, children and young people (at least 50% of a full-time position)',
+        'Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)':
+          'Qualification course for school assistance / inclusion specialist OR a total of 2 years of professional experience working with families, children and young people (at least 50% of a full-time position)',
+        'Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER mind. 3 Jahre Berufserfahrung':
+          'Qualification course for school assistance / inclusion specialist OR at least 3 years of professional experience',
+        'Qualifizierungskurs Schulassistenz/Inklusionsfachkraft UND 1 Jahr Berufserfahrung':
+          'Qualification course for school assistance / inclusion specialist AND 1 year of professional experience',
+        'Qualifizierungskurs zur Schulassistenz/Inklusionsfachkraft nach den festgelegten Standards der Region Hannover und der Landeshauptstadt Hannover ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)':
+          'Qualification course for school assistance / inclusion specialist (according to the defined standards of Hannover Region and the City of Hannover) OR a total of 2 years of professional experience working with families, children and young people (at least 50% of a full-time position)',
+        'Qualifizierungskurs zur Schulassistenz/Inklusionsfachkraft nach den festgelegten Standards der Region Hannover und der Landeshauptstadt Hannover ODER insgesamt 2 Jahre Berufserfahrung in einem pädagogischen Arbeitsbereich in einer Schule (für Kinder/Jugendliche) (mindestens 50 % einer Vollzeitanstellung)':
+          'Qualification course for school assistance / inclusion specialist (according to the defined standards of Hannover Region and the City of Hannover) OR a total of 2 years of professional experience in an educational setting in a school (for children / young people) (at least 50% of a full-time position)',
+        'Mindestens 6 Tage (48 Std.) tätigkeitsrelevante Weiterbildungen/Fortbildungen UND mind. 3 Jahre Berufserfahrung in der Schulassistenz (mind. 50 % einer Vollzeitstelle). Immer Einzelfallentscheidung in Abstimmung mit den Fachteams.':
+          'At least 6 days (48 hrs) of relevant further training AND at least 3 years of professional experience in school assistance (at least 50% of a full-time position). Always an individual case decision in consultation with the specialist teams.',
+        'Mindestens 3 Jahre ehrenamtliche Tätigkeit in einem Bereich mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung) UND Qualifizierungskurs zur Schulassistenz/Inklusionsfachkraft nach den festgelegten Standards der Region Hannover und der Landeshauptstadt Hannover. Immer Einzelfallentscheidung in Abstimmung mit den Fachteams.':
+          'At least 3 years of voluntary work with families, children and young people (at least 50% of a full-time position) AND qualification course for school assistance / inclusion specialist (according to the defined standards of Hannover Region and the City of Hannover). Always an individual case decision in consultation with the specialist teams.',
+      },
+      infoMap: {
+        'Anerkannt im Rahmen SGB IX.': 'Recognised under SGB IX.',
+        'Qualifiziert ab dem 3. Semester.': 'Qualified from the 3rd semester onwards.',
+        'Nur im Rahmen SGB IX bei ausschließlich körperlicher Behinderung.': 'Only under SGB IX for exclusively physical disability.',
+      },
+    }
+  };
+
+  function setLang(l) {
+    lang = l;
+    document.getElementById('langDe').classList.toggle('active', l === 'de');
+    document.getElementById('langEn').classList.toggle('active', l === 'en');
+    const T = translations[l];
+    // Update all data-i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (T[key] !== undefined) el.innerHTML = T[key];
+    });
+    // Update placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (T[key] !== undefined) el.placeholder = T[key];
+    });
+    // Re-render Phase B list if visible
+    if (selectedGroup && document.getElementById('qualPhaseB').style.display !== 'none') {
+      showQualGroup(selectedGroup);
+    }
+  }
+
   /* ── Schnellbewerbung Quiz ──────────────────────── */
   const quizData = { qualification: null, hours: null, start: null };
   /* ── Qualifikations-Daten (Region Hannover / LHH Fachkraftmatrix) ── */
@@ -892,17 +1065,13 @@
   function showQualGroup(grp) {
     document.getElementById('qualPhaseA').style.display = 'none';
     document.getElementById('qualPhaseB').style.display = 'block';
-    document.getElementById('qualPhaseBTitle').textContent = groupTitles[grp] || '';
+    const T = translations[lang];
+    document.getElementById('qualPhaseBTitle').textContent = T.gt[grp] || '';
     document.getElementById('qualResult').style.display = 'none';
     const btn = document.getElementById('nextBtn1');
     btn.style.opacity = '.4'; btn.style.pointerEvents = 'none';
 
-    const catLabels = {
-      1: '✅ Direkt qualifiziert – keine weiteren Voraussetzungen',
-      2: '✅ Qualifiziert – zusätzlich 2 Jahre Berufserfahrung erforderlich',
-      3: '⚡ Qualifizierbar – Qualifizierungskurs oder 2 Jahre Erfahrung erforderlich',
-      4: 'ℹ️ Einzelfallentscheidung',
-    };
+    const catLabels = { 1: T.cat1hd, 2: T.cat2hd, 3: T.cat3hd, 4: T.cat4hd };
     const items = qualData.filter(i => i.grp === grp).sort((a, b) => a.c - b.c);
     let html = '', lastCat = null;
     items.forEach(item => {
@@ -948,20 +1117,23 @@
     const el = document.querySelector(`.qual-item[data-idx="${idx}"]`);
     if (el) { el.classList.add('selected'); el.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
     quizData.qualification = item.n;
+    const T = translations[lang];
+    const reqText = (T.reqMap && T.reqMap[item.req]) ? T.reqMap[item.req] : (item.req || '');
+    const infoText = (T.infoMap && item.info && T.infoMap[item.info]) ? T.infoMap[item.info] : (item.info || '');
     const box = document.getElementById('qualResult');
     box.style.display = 'block';
     if (item.c === 1) {
       box.className = 'qual-result-box qr1';
-      box.innerHTML = `<strong>✅ Sie sind direkt qualifiziert!</strong>${item.info || 'Keine weiteren Voraussetzungen erforderlich. Einfach bewerben!'}`;
+      box.innerHTML = `<strong>${T.res1title}</strong>${infoText || T.res1body}`;
     } else if (item.c === 2) {
       box.className = 'qual-result-box qr2';
-      box.innerHTML = `<strong>✅ Sie sind qualifiziert!</strong>Zusätzliche Voraussetzung: ${item.req}${item.info ? '<br><em style="font-size:.8rem;opacity:.8;">' + item.info + '</em>' : ''}`;
+      box.innerHTML = `<strong>${T.res2title}</strong>${T.res2pre}${reqText}${infoText ? '<br><em style="font-size:.8rem;opacity:.8;">' + infoText + '</em>' : ''}`;
     } else if (item.c === 3) {
       box.className = 'qual-result-box qr3';
-      box.innerHTML = `<strong>⚡ Potenziell qualifizierbar</strong>Zusätzlich erforderlich: ${item.req}<br><span style="display:block;margin-top:6px;font-size:.82rem;">Trotzdem gerne bewerben – wir prüfen Ihre Situation persönlich.</span>`;
+      box.innerHTML = `<strong>${T.res3title}</strong>${T.res3pre}${reqText}<br><span style="display:block;margin-top:6px;font-size:.82rem;">${T.res3post}</span>`;
     } else {
       box.className = 'qual-result-box qr4';
-      box.innerHTML = `<strong>ℹ️ Einzelfallentscheidung</strong>${item.req}<br><span style="display:block;margin-top:6px;font-size:.82rem;">Sprechen Sie uns direkt an – wir klären gemeinsam, ob eine Anerkennung möglich ist.</span>`;
+      box.innerHTML = `<strong>${T.res4title}</strong>${T.res4pre}${reqText}<br><span style="display:block;margin-top:6px;font-size:.82rem;">${T.res4post}</span>`;
     }
     const btn = document.getElementById('nextBtn1');
     btn.style.opacity = '1'; btn.style.pointerEvents = 'auto';
@@ -998,10 +1170,14 @@
   }
 
   function buildSummary() {
+    const T = translations[lang];
+    const hoursDisplay = (T.hoursMap && T.hoursMap[quizData.hours]) ? T.hoursMap[quizData.hours] : quizData.hours;
+    const startDisplay = (T.startMap && T.startMap[quizData.start]) ? T.startMap[quizData.start] : quizData.start;
     document.getElementById('quizSummary').innerHTML =
-      '📋 <strong>Ihre Angaben:</strong> ' + quizData.qualification +
-      ' · ' + quizData.hours +
-      ' · Start: ' + quizData.start;
+      '📋 <strong>' + T.summaryLabel + '</strong> ' + quizData.qualification +
+      ' · ' + hoursDisplay +
+      ' · ' + T.summaryStart + ' ' + startDisplay;
+    // Formspree bekommt immer Deutsch
     document.getElementById('f_qualification').value = quizData.qualification;
     document.getElementById('f_hours').value = quizData.hours;
     document.getElementById('f_start').value = quizData.start;
