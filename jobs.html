@@ -218,7 +218,7 @@
       border-radius: 2px;
       transition: width .4s cubic-bezier(.4,0,.2,1);
     }
-    .quiz-body { padding: 40px 44px; }
+    .quiz-body { padding: 40px 44px 52px; }
     .quiz-step { display: none; }
     .quiz-step.active { display: block; }
     .quiz-step-label {
@@ -312,6 +312,80 @@
     }
     .quiz-back:hover { border-color: var(--teal); color: var(--teal); }
 
+    /* ── Qualifikations-Check ─────────────────────────── */
+    .qual-legend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+    .qual-legend-item { display: flex; align-items: center; gap: 5px; font-size: .73rem; color: var(--text-soft); }
+    .qual-legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+    .qual-search-wrap { margin-bottom: 8px; }
+    .qual-search {
+      width: 100%; box-sizing: border-box;
+      padding: 11px 14px 11px 40px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: .9rem; color: var(--text);
+      background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") 13px center no-repeat;
+      outline: none; transition: border-color .18s;
+    }
+    .qual-search:focus { border-color: var(--teal); background-color: var(--white); }
+    .qual-list {
+      max-height: 420px; overflow-y: auto;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--white);
+    }
+    .qual-group-hd {
+      padding: 6px 14px;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--text-muted); background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 1;
+    }
+    .qual-item {
+      padding: 9px 14px; font-size: .86rem; color: var(--text);
+      cursor: pointer; border-bottom: 1px solid var(--border-soft);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 10px; transition: background .12s;
+    }
+    .qual-item:hover { background: var(--teal-bg); }
+    .qual-item.selected { background: var(--teal-bg); font-weight: 600; color: var(--teal-dark); }
+    .qual-badge {
+      font-size: .68rem; font-weight: 700;
+      padding: 2px 8px; border-radius: 3px; white-space: nowrap; flex-shrink: 0;
+    }
+    .qb1 { background: #d1fae5; color: #065f46; }
+    .qb2 { background: #fef9c3; color: #713f12; }
+    .qb3 { background: #ffedd5; color: #9a3412; }
+    .qb4 { background: #dbeafe; color: #1e40af; }
+    .qual-no-results { padding: 18px; text-align: center; color: var(--text-muted); font-size: .85rem; }
+    .qual-section-hd {
+      padding: 6px 14px;
+      font-size: .69rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+      color: var(--text-soft); background: var(--bg);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 1;
+    }
+    .qual-section-hd:first-child { border-top: none; }
+    .qual-back-btn {
+      display: inline-block; margin-top: 14px;
+      background: none; border: none;
+      color: var(--teal); font-size: .84rem; font-weight: 600;
+      cursor: pointer; padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .qual-back-btn:hover { text-decoration: underline; }
+    .qual-result-box {
+      margin-top: 12px; padding: 13px 16px;
+      border-radius: var(--radius-sm);
+      font-size: .86rem; line-height: 1.55;
+    }
+    .qual-result-box strong { display: block; margin-bottom: 3px; font-size: .9rem; }
+    .qr1 { background: #d1fae5; border: 1px solid #6ee7b7; color: #065f46; }
+    .qr2 { background: #fef9c3; border: 1px solid #fde047; color: #713f12; }
+    .qr3 { background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412; }
+    .qr4 { background: #eff6ff; border: 1px solid #93c5fd; color: #1e40af; }
+
     @media (max-width: 768px) {
       .stelle-body { grid-template-columns: 1fr; gap: 0; }
       .calc-wrapper, .quiz-body { padding: 28px 24px; }
@@ -348,7 +422,7 @@
   <div class="page-header-inner">
     <div class="breadcrumb"><a href="index.html">Startseite</a> › Jobs</div>
     <h1>Schulbegleiter (m/w/d) unbefristet gesucht</h1>
-    <p>Wir suchen Menschen, die mit Herz dabei sind – nicht nur mit Abschluss. Bewerben Sie sich jetzt in Hannover und Umgebung.</p>
+    <p>Wir suchen qualifizierte Menschen, die mit Herz dabei sind. Bewerben Sie sich jetzt in Hannover und Umgebung.</p>
   </div>
 </div>
 
@@ -357,17 +431,9 @@
   <div class="section-inner">
     <span class="section-label">Gehaltsrechner</span>
     <h2 class="section-title">Was können Sie verdienen?</h2>
-    <p class="section-intro">Wählen Sie Ihre Qualifikation und gewünschte Stundenzahl – der Rechner zeigt Ihr persönliches Monatsgehalt.</p>
+    <p class="section-intro">Wählen Sie Ihre gewünschte Stundenzahl – der Rechner zeigt Ihr persönliches Monatsgehalt bei 24€/Std.</p>
 
     <div class="calc-wrapper">
-      <div class="calc-toggle">
-        <button class="calc-toggle-btn active" id="btnQualifiziert" onclick="setQualification(24, this)">
-          Qualifiziert · 24 €/Std.
-        </button>
-        <button class="calc-toggle-btn" id="btnUnqualifiziert" onclick="setQualification(19, this)">
-          Unqualifiziert · 19 €/Std.
-        </button>
-      </div>
 
       <div class="calc-slider-wrap">
         <div class="calc-slider-label">
@@ -389,11 +455,11 @@
         <div class="calc-extras">
           <div class="calc-extra" id="extraWeihnacht">
             <span class="calc-extra-icon">🎄</span>
-            bis 1.000 € Weihnachtsgeld
+            bis 1.000€ Weihnachtsgeld
           </div>
           <div class="calc-extra" id="extraFahrt">
             <span class="calc-extra-icon">🚗</span>
-            bis 100 € Fahrtkosten/Monat
+            bis 100€ Fahrtkosten/Monat
           </div>
         </div>
       </div>
@@ -414,27 +480,59 @@
       </div>
       <div class="quiz-body">
 
-        <!-- Schritt 1: Qualifikation -->
+        <!-- Schritt 1: Qualifikations-Check -->
         <div class="quiz-step active" id="qStep1">
           <p class="quiz-step-label">Schritt 1 von 3</p>
-          <p class="quiz-question">Haben Sie eine pädagogische oder therapeutische Ausbildung?</p>
-          <div class="quiz-options">
-            <button class="quiz-option" onclick="pickOption(this, 'qualification', 'qualifiziert')">
-              <span class="quiz-option-icon">🎓</span>
-              Ja – z.B. Erzieher/in, Sozialpädagoge/in oder ähnliches
-            </button>
-            <button class="quiz-option" onclick="pickOption(this, 'qualification', 'unqualifiziert')">
-              <span class="quiz-option-icon">❤️</span>
-              Nein – aber ich möchte mit Kindern arbeiten
-            </button>
-            <button class="quiz-option" onclick="pickOption(this, 'qualification', 'student')">
-              <span class="quiz-option-icon">📚</span>
-              Ich studiere gerade (ab 3. Semester)
-            </button>
+
+          <!-- Phase A: Qualifikationsart wählen -->
+          <div id="qualPhaseA">
+            <p class="quiz-question">Was bringen Sie mit?</p>
+            <p style="font-size:.84rem;color:var(--text-soft);margin-bottom:16px;line-height:1.6;">Wählen Sie Ihre Qualifikationsart – wir zeigen Ihnen dann alle Abschlüsse, die anerkannt werden. Viele wissen nicht, dass sie bereits qualifiziert sind.</p>
+            <div class="quiz-options">
+              <button class="quiz-option" onclick="selectGroup('hochschule', this)">
+                <span class="quiz-option-icon">🎓</span>
+                Hochschulabschluss (Bachelor, Master oder Diplom)
+              </button>
+              <button class="quiz-option" onclick="selectGroup('ausbildung', this)">
+                <span class="quiz-option-icon">📜</span>
+                Berufsausbildung (staatlich anerkannt)
+              </button>
+              <button class="quiz-option" onclick="selectGroup('weiterbildung', this)">
+                <span class="quiz-option-icon">📚</span>
+                Weiterbildung oder Kurs
+              </button>
+              <button class="quiz-option" onclick="selectGroup('studium', this)">
+                <span class="quiz-option-icon">✏️</span>
+                Ich studiere noch (ab 3. Semester)
+              </button>
+              <button class="quiz-option" onclick="selectGroup('erfahrung', this)">
+                <span class="quiz-option-icon">💼</span>
+                Nur Berufserfahrung (keine formale Ausbildung)
+              </button>
+            </div>
+            <div class="quiz-nav">
+              <button class="btn btn-primary" id="nextBtn1A" onclick="advanceToPhaseB()" style="opacity:.4;pointer-events:none">Weiter →</button>
+            </div>
           </div>
-          <div class="quiz-nav">
-            <button class="btn btn-primary" onclick="nextStep(1)" id="nextBtn1" style="opacity:.4;pointer-events:none">Weiter →</button>
+
+          <!-- Phase B: Spezifischen Abschluss wählen -->
+          <div id="qualPhaseB" style="display:none;">
+            <p class="quiz-question" id="qualPhaseBTitle"></p>
+            <p style="font-size:.84rem;color:var(--text-soft);margin-bottom:12px;line-height:1.6;">Wählen Sie Ihren genauen Abschluss. Das Badge zeigt Ihre Kategorie.</p>
+            <div class="qual-legend" style="margin-bottom:10px;">
+              <div class="qual-legend-item"><span class="qual-legend-dot" style="background:#6ee7b7;"></span>Kat. 1 – Direkt qualifiziert</div>
+              <div class="qual-legend-item"><span class="qual-legend-dot" style="background:#fde047;"></span>Kat. 2 – + 2 Jahre Erfahrung</div>
+              <div class="qual-legend-item"><span class="qual-legend-dot" style="background:#fed7aa;"></span>Kat. 3 – + Qualifizierungskurs</div>
+              <div class="qual-legend-item"><span class="qual-legend-dot" style="background:#93c5fd;"></span>Kat. 4 – Einzelfall</div>
+            </div>
+            <div class="qual-list" id="qualList"></div>
+            <div id="qualResult" style="display:none;"></div>
+            <div class="quiz-nav">
+              <button class="quiz-back" onclick="showQualPhaseA()">← Zurück</button>
+              <button class="btn btn-primary" id="nextBtn1" onclick="nextStep(1)" style="opacity:.4;pointer-events:none">Weiter →</button>
+            </div>
           </div>
+
         </div>
 
         <!-- Schritt 2: Stunden -->
@@ -443,15 +541,12 @@
           <p class="quiz-question">Wie viele Stunden pro Woche wären Sie verfügbar?</p>
           <div class="quiz-options">
             <button class="quiz-option" onclick="pickOption(this, 'hours', 'bis 20 Stunden')">
-              <span class="quiz-option-icon">🌤</span>
               Bis zu 20 Stunden – Teilzeit
             </button>
             <button class="quiz-option" onclick="pickOption(this, 'hours', '20–30 Stunden')">
-              <span class="quiz-option-icon">☀️</span>
               20–30 Stunden – flexible Teilzeit
             </button>
             <button class="quiz-option" onclick="pickOption(this, 'hours', 'ab 30 Stunden')">
-              <span class="quiz-option-icon">🌟</span>
               30+ Stunden – Vollzeit oder nahezu Vollzeit
             </button>
           </div>
@@ -546,7 +641,9 @@
             <span class="badge badge-teal">Teilzeit</span>
             <span class="badge badge-orange">Hannover & Region</span>
             <span class="badge badge-violet">Unbefristet</span>
-            <span class="badge badge-amber">24 €/Std.</span>
+            <span class="badge badge-amber">24€/Std.</span>
+            <span class="badge badge-amber">🎄bis 1.000€</span>
+            <span class="badge badge-amber">🚗bis 100€</span>
           </div>
           <h3>Qualifizierte Schulbegleitung (m/w/d)</h3>
         </div>
@@ -560,56 +657,6 @@
             <li>Unterstützung beim Lernen, in Pausen und bei schulischen Übergängen</li>
             <li>Enger Austausch mit Eltern, Lehrkräften und unserem Team</li>
             <li>Dokumentation und Reflexion der Begleitung</li>
-          </ul>
-        </div>
-        <div>
-          <h4>Qualifizierende Abschlüsse (Auswahl)</h4>
-          <ul>
-            <li>Erzieher/in, Heilerziehungspfleger/in, Heilpädagoge/in</li>
-            <li>Sozialpädagoge/in, Sozialarbeiter/in (BA/MA/Diplom)</li>
-            <li>Kindheitspädagoge/in, Sonderpädagoge/in</li>
-            <li>Ergotherapeut/in, Logopäde/in, Physiotherapeut/in</li>
-            <li>Psychologe/in, Pädagoge/in mit Hochschulabschluss</li>
-            <li>Gesundheits- und Kinderkrankenpfleger/in</li>
-            <li>Studierende der o. g. Fachrichtungen (ab 3. Semester)</li>
-            <li>Vergleichbare anerkannte Qualifikationen nach SGB VIII</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Stelle 2 -->
-    <div class="stelle">
-      <div class="stelle-header">
-        <div>
-          <div class="stelle-badges">
-            <span class="badge badge-teal">Vollzeit</span>
-            <span class="badge badge-teal">Teilzeit</span>
-            <span class="badge badge-orange">Hannover & Region</span>
-            <span class="badge badge-violet">Unbefristet</span>
-            <span class="badge badge-amber">19 €/Std.</span>
-          </div>
-          <h3>Unqualifizierte Schulbegleitung (m/w/d)</h3>
-        </div>
-        <a href="#schnellbewerbung" class="btn btn-primary">Jetzt bewerben</a>
-      </div>
-      <div class="stelle-body">
-        <div>
-          <h4>Aufgaben</h4>
-          <ul>
-            <li>Praktische Alltagsbegleitung eines Kindes in der Schule</li>
-            <li>Orientierung und Struktur im Schulalltag geben</li>
-            <li>Verlässliche Bezugsperson in Unterricht und Pausen</li>
-            <li>Regelmäßiger Austausch mit Familie und unserem Team</li>
-          </ul>
-        </div>
-        <div>
-          <h4>Voraussetzungen</h4>
-          <ul>
-            <li>Keine formale pädagogische Ausbildung notwendig</li>
-            <li>Freude an der Arbeit mit Kindern und Jugendlichen</li>
-            <li>Zuverlässigkeit, Empathie und Offenheit</li>
-            <li>Bereitschaft zur Einarbeitung durch unser Team</li>
           </ul>
         </div>
       </div>
@@ -693,17 +740,7 @@
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
 
   /* ── Gehaltsrechner ─────────────────────────────── */
-  let currentRate = 24;
-
-  function setQualification(rate, clickedBtn) {
-    currentRate = rate;
-    document.querySelectorAll('.calc-toggle-btn').forEach(b => b.classList.remove('active'));
-    clickedBtn.classList.add('active');
-    document.getElementById('extraWeihnacht').innerHTML =
-      '<span class="calc-extra-icon">🎄</span>' +
-      (rate === 24 ? 'bis 1.000 € Weihnachtsgeld' : 'bis 500 € Weihnachtsgeld');
-    updateCalc();
-  }
+  const currentRate = 24;
 
   function updateCalc() {
     const slider = document.getElementById('hoursSlider');
@@ -729,11 +766,207 @@
 
   /* ── Schnellbewerbung Quiz ──────────────────────── */
   const quizData = { qualification: null, hours: null, start: null };
-  const qualLabels = {
-    qualifiziert: 'Qualifizierte Kraft (pädagogische/therapeutische Ausbildung)',
-    unqualifiziert: 'Quereinsteiger/in (keine Fachausbildung)',
-    student: 'Studierende/r (ab 3. Semester)'
+  /* ── Qualifikations-Daten (Region Hannover / LHH Fachkraftmatrix) ── */
+  const qualData = [
+    // ── HOCHSCHULE, Kat. 1: Direkt qualifiziert ──────────────────────
+    { n: "Soziale Arbeit / Sozialpädagogik",                    grp: 'hochschule', c: 1 },
+    { n: "Heilpädagogik",                                        grp: 'hochschule', c: 1 },
+    { n: "Sonderpädagogik",                                      grp: 'hochschule', c: 1 },
+    { n: "Kindheitspädagogik",                                   grp: 'hochschule', c: 1 },
+    { n: "Kindheitswissenschaften",                              grp: 'hochschule', c: 1 },
+    { n: "Frühkindliche inklusive Bildung (BiB)",               grp: 'hochschule', c: 1 },
+    { n: "Pädagogik",                                            grp: 'hochschule', c: 1 },
+    { n: "Rehabilitationspädagogik",                             grp: 'hochschule', c: 1 },
+    { n: "Sozial- und Organisationspädagogik",                  grp: 'hochschule', c: 1 },
+    { n: "Psychologie (Diplom / Master)",                       grp: 'hochschule', c: 1 },
+    { n: "Psychologie Bachelor mit pädagogischem Schwerpunkt",  grp: 'hochschule', c: 1 },
+    { n: "Erziehungs- und/oder Bildungswissenschaften",         grp: 'hochschule', c: 1 },
+    { n: "Lehramt (2. Staatsexamen oder Masterabschluss)",      grp: 'hochschule', c: 1 },
+    { n: "Lehramt (Bachelorabschluss oder 1. Staatsexamen)",    grp: 'hochschule', c: 1 },
+    { n: "Grundschulpädagogik",                                  grp: 'hochschule', c: 1 },
+    { n: "Psychologie Bachelor ohne pädagogischen Schwerpunkt", grp: 'hochschule', c: 1 },
+    { n: "Gleichwertiger ausländischer Hochschulabschluss (Kategorie 1)", grp: 'hochschule', c: 1, req: "Deutschkenntnisse auf dem B2-Niveau" },
+    // ── HOCHSCHULE, Kat. 2: + 1 Jahr Berufserfahrung ─────────────────
+    { n: "Waldorfpädagogik",                                     grp: 'hochschule', c: 2, req: "insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Sprach- und Informationswiss. mit Lehramtsoption",    grp: 'hochschule', c: 2, req: "insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Kulturpädagogik",                                      grp: 'hochschule', c: 2, req: "insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Religions- und Gemeindepädagogik",                    grp: 'hochschule', c: 2, req: "insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Musiktherapie",                                        grp: 'hochschule', c: 2, req: "insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Gleichwertiger ausländischer Hochschulabschluss (Kategorie 2)", grp: 'hochschule', c: 2, req: "Deutschkenntnisse auf dem B2-Niveau UND insgesamt 1 Jahr Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    // ── HOCHSCHULE, Kat. 3: Qualifizierungskurs oder 2 Jahre Erfahrung
+    { n: "Logopädie",                                            grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Staatliche/r Atem-, Sprech- und Stimmlehrer/in",      grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Sozialwissenschaften",                                  grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Kunsttherapie",                                         grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Kunstpädagogik",                                        grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Gesundheitspsychologie",                                grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Gesundheitsbildung und -pädagogik",                   grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Medizinpädagogik",                                      grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Spiel- und Medienpädagogik",                           grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Wirtschaftspädagogik",                                  grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Elementare Musikpädagogik",                            grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Musikerziehung",                                       grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Theaterpädagogik",                                      grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Pflegepädagogik",                                       grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Berufspädagogik im Gesundheitswesen",                  grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Rehabilitation (Hochschulstudium)",                    grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Gesundheits- und Pflegepädagogik",                    grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Gemeindepädagogik und Diakonie",                      grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Freizeitpädagogik",                                    grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Sport- und Bewegungspädagogik",                       grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Heilpraktiker/in der Psychotherapie (staatl. anerkannt)", grp: 'hochschule', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Ausländischer Hochschulabschluss (Kat. 1+2, Nicht-EHEA-Land)", grp: 'hochschule', c: 3, req: "Qualifizierungskurs zur Schulassistenz/Inklusionsfachkraft nach den festgelegten Standards der Region Hannover und der Landeshauptstadt Hannover ODER insgesamt 2 Jahre Berufserfahrung in einem pädagogischen Arbeitsbereich in einer Schule (für Kinder/Jugendliche) (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Studium Kat. 1+2 ohne Abschluss – mit Leistungsnachweisen (mind. 6 Semester / 3 Jahre)", grp: 'hochschule', c: 3, req: "Qualifizierungskurs zur Schulassistenz/Inklusionsfachkraft nach den festgelegten Standards der Region Hannover und der Landeshauptstadt Hannover ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+
+    // ── AUSBILDUNG, Kat. 1: Direkt qualifiziert ──────────────────────
+    { n: "Erzieher/in",                                          grp: 'ausbildung', c: 1 },
+    { n: 'Abschluss „Jugend- und Heimerziehung“',      grp: 'ausbildung', c: 1 },
+    { n: "Heilerziehungspfleger/in",                             grp: 'ausbildung', c: 1 },
+    { n: "Heilpädagog/in",                                       grp: 'ausbildung', c: 1 },
+    { n: "Ergotherapeut/in",                                     grp: 'ausbildung', c: 1 },
+    { n: "Gesundheits- und Kinderkrankenpfleger/in",            grp: 'ausbildung', c: 1, info: "Anerkannt im Rahmen SGB IX." },
+    { n: "Gleichwertige ausländische Berufsausbildung (Kategorie 1)", grp: 'ausbildung', c: 1, req: "Deutschkenntnisse auf dem B2-Niveau" },
+    // ── AUSBILDUNG, Kat. 2: + 1 Jahr Berufserfahrung ─────────────────
+    { n: "Sozialassistenz / Heilerziehungspflegeassistenz / sozialpädagogische Assistenz / Erzieherassistenz", grp: 'ausbildung', c: 2, req: "insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Kinderpfleger/in",                                     grp: 'ausbildung', c: 2, req: "insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Waldorfpädagogik (Ausbildung)",                        grp: 'ausbildung', c: 2, req: "insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Gleichwertige ausländische Berufsausbildung (Kategorie 2)", grp: 'ausbildung', c: 2, req: "Deutschkenntnisse auf dem B2-Niveau UND insgesamt 1 Jahr Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Gesundheits- und Krankenpflege",                       grp: 'ausbildung', c: 2, req: "1 Jahr Berufserfahrung (nur SGB IX, körperliche Behinderung)", info: "Nur im Rahmen SGB IX bei ausschließlich körperlicher Behinderung." },
+    { n: "Altenpflege",                                          grp: 'ausbildung', c: 2, req: "1 Jahr Berufserfahrung (nur SGB IX, körperliche Behinderung)", info: "Nur im Rahmen SGB IX bei ausschließlich körperlicher Behinderung." },
+    { n: "Pflegefachmann/-frau",                                 grp: 'ausbildung', c: 2, req: "1 Jahr Berufserfahrung (nur SGB IX, körperliche Behinderung)", info: "Nur im Rahmen SGB IX bei ausschließlich körperlicher Behinderung." },
+    { n: "Physiotherapeut/in",                                   grp: 'ausbildung', c: 2, req: "1 Jahr Berufserfahrung (nur SGB IX, körperliche Behinderung)", info: "Nur im Rahmen SGB IX bei ausschließlich körperlicher Behinderung." },
+    { n: "Medizinische/r Fachangestellte/r (MFA)",               grp: 'ausbildung', c: 2, req: "1 Jahr Berufserfahrung (nur SGB IX, körperliche Behinderung)", info: "Nur im Rahmen SGB IX bei ausschließlich körperlicher Behinderung." },
+    // ── AUSBILDUNG, Kat. 3: Qualifizierungskurs oder 2 Jahre Erfahrung
+    { n: "Gesundheits- und Krankenpflege",                       grp: 'ausbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Kinderkrankenpflege",                                  grp: 'ausbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Altenpflege",                                          grp: 'ausbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Pflegefachmann/-frau",                                 grp: 'ausbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Physiotherapeut/in",                                   grp: 'ausbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Medizinische/r Fachangestellte/r (MFA)",               grp: 'ausbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Pflegehelfer/in",                                      grp: 'ausbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft UND 1 Jahr Berufserfahrung" },
+    { n: "Kinderpflegehelfer/in",                                grp: 'ausbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft UND 1 Jahr Berufserfahrung" },
+    { n: "Staatl. anerkannte Fachkraft für Pflegeassistenz",     grp: 'ausbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft UND 1 Jahr Berufserfahrung" },
+    { n: "Ausländische Berufsausbildung (Kat. 1+2, Nicht-EHEA-Land)", grp: 'ausbildung', c: 3, req: "Qualifizierungskurs zur Schulassistenz/Inklusionsfachkraft nach den festgelegten Standards der Region Hannover und der Landeshauptstadt Hannover ODER insgesamt 2 Jahre Berufserfahrung in einem pädagogischen Arbeitsbereich in einer Schule (für Kinder/Jugendliche) (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Ausbildung Kat. 1+2 ohne Abschluss – mit Leistungsnachweisen (mind. 6 Semester / 3 Jahre)", grp: 'ausbildung', c: 3, req: "Qualifizierungskurs zur Schulassistenz/Inklusionsfachkraft nach den festgelegten Standards der Region Hannover und der Landeshauptstadt Hannover ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+
+    // ── WEITERBILDUNG, Kat. 3 ────────────────────────────────────────
+    { n: "Kindertagespflegeperson",                              grp: 'weiterbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Sozialpäd. Vollzeitpflegeperson (§ 33 SGB VIII)",    grp: 'weiterbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Pädagogische Mitarbeiter/in (3–6 Monate Fortbildung)", grp: 'weiterbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Reha-pädagogische Weiterbildung",                     grp: 'weiterbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+    { n: "Kurs Inklusionsfachkraft / Schulassistenz (mind. 6 Monate)", grp: 'weiterbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER mind. 3 Jahre Berufserfahrung" },
+    { n: "Weiterbildung Kita Assistenz (6 Monate)",             grp: 'weiterbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER mind. 3 Jahre Berufserfahrung" },
+    { n: 'Kontaktstudium: Pädagogische Kompetenz in der Migrationsgesellschaft (9-monatige Weiterbildung Oldenburg)', grp: 'weiterbildung', c: 3, req: "Qualifizierungskurs Schulassistenz/Inklusionsfachkraft ODER insgesamt 2 Jahre Berufserfahrung in einem Arbeitsfeld mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung)" },
+
+    // ── STUDIUM (laufend) ─────────────────────────────────────────────
+    { n: "Soziale Arbeit / Sozialpädagogik",                    grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+    { n: "Heilpädagogik",                                       grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+    { n: "Sonderpädagogik",                                     grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+    { n: "Kindheitspädagogik",                                  grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+    { n: "Kindheitswissenschaften",                             grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+    { n: "Frühkindliche inklusive Bildung (BiB)",              grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+    { n: "Pädagogik",                                           grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+    { n: "Rehabilitationspädagogik",                            grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+    { n: "Sozial- und Organisationspädagogik",                 grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+    { n: "Psychologie (Diplom / Master)",                      grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+    { n: "Psychologie Bachelor mit pädagogischem Schwerpunkt", grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+    { n: "Psychologie Bachelor ohne pädagogischen Schwerpunkt", grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+    { n: "Erziehungs- und/oder Bildungswissenschaften",        grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+    { n: "Lehramt (2. Staatsexamen oder Masterabschluss)",     grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+    { n: "Lehramt (Bachelorabschluss oder 1. Staatsexamen)",   grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+    { n: "Grundschulpädagogik",                                grp: 'studium', c: 1, info: "Qualifiziert ab dem 3. Semester." },
+
+    // ── BERUFSERFAHRUNG / EINZELFALL, Kat. 4 ─────────────────────────
+    { n: "Berufserfahrung ohne Ausbildung (mind. 3 Jahre Schulassistenz)", grp: 'erfahrung', c: 4, req: "Mindestens 6 Tage (48 Std.) tätigkeitsrelevante Weiterbildungen/Fortbildungen UND mind. 3 Jahre Berufserfahrung in der Schulassistenz (mind. 50 % einer Vollzeitstelle). Immer Einzelfallentscheidung in Abstimmung mit den Fachteams." },
+    { n: "Ehrenamtliche Tätigkeit (mind. 3 Jahre, ohne formale Ausbildung)", grp: 'erfahrung', c: 4, req: "Mindestens 3 Jahre ehrenamtliche Tätigkeit in einem Bereich mit Familien, Kindern und Jugendlichen (mindestens 50 % einer Vollzeitanstellung) UND Qualifizierungskurs zur Schulassistenz/Inklusionsfachkraft nach den festgelegten Standards der Region Hannover und der Landeshauptstadt Hannover. Immer Einzelfallentscheidung in Abstimmung mit den Fachteams." },
+  ];
+
+  const groupTitles = {
+    hochschule:   'Welchen Hochschulabschluss haben Sie?',
+    ausbildung:   'Welche Berufsausbildung haben Sie?',
+    weiterbildung:'Welche Weiterbildung oder welchen Kurs haben Sie?',
+    studium:      'In welchem Studiengang studieren Sie?',
+    erfahrung:    'Berufserfahrung ohne formale Ausbildung',
   };
+
+  function showQualGroup(grp) {
+    document.getElementById('qualPhaseA').style.display = 'none';
+    document.getElementById('qualPhaseB').style.display = 'block';
+    document.getElementById('qualPhaseBTitle').textContent = groupTitles[grp] || '';
+    document.getElementById('qualResult').style.display = 'none';
+    const btn = document.getElementById('nextBtn1');
+    btn.style.opacity = '.4'; btn.style.pointerEvents = 'none';
+
+    const catLabels = {
+      1: '✅ Direkt qualifiziert – keine weiteren Voraussetzungen',
+      2: '✅ Qualifiziert – zusätzlich 2 Jahre Berufserfahrung erforderlich',
+      3: '⚡ Qualifizierbar – Qualifizierungskurs oder 2 Jahre Erfahrung erforderlich',
+      4: 'ℹ️ Einzelfallentscheidung',
+    };
+    const items = qualData.filter(i => i.grp === grp).sort((a, b) => a.c - b.c);
+    let html = '', lastCat = null;
+    items.forEach(item => {
+      if (item.c !== lastCat) {
+        lastCat = item.c;
+        html += `<div class="qual-section-hd">${catLabels[item.c]}</div>`;
+      }
+      const gi = qualData.indexOf(item);
+      html += `<div class="qual-item" onclick="selectQual(${gi})" data-idx="${gi}">
+        <span>${item.n}</span>
+        <span class="qual-badge qb${item.c}">Kat. ${item.c}</span>
+      </div>`;
+    });
+    document.getElementById('qualList').innerHTML = html || '<div class="qual-no-results">Keine Einträge.</div>';
+  }
+
+  let selectedGroup = null;
+
+  function selectGroup(grp, el) {
+    document.querySelectorAll('#qualPhaseA .quiz-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedGroup = grp;
+    const btn = document.getElementById('nextBtn1A');
+    btn.style.opacity = '1'; btn.style.pointerEvents = 'auto';
+  }
+
+  function advanceToPhaseB() {
+    if (!selectedGroup) return;
+    showQualGroup(selectedGroup);
+  }
+
+  function showQualPhaseA() {
+    document.getElementById('qualPhaseA').style.display = 'block';
+    document.getElementById('qualPhaseB').style.display = 'none';
+    document.getElementById('qualResult').style.display = 'none';
+    const btn = document.getElementById('nextBtn1');
+    btn.style.opacity = '.4'; btn.style.pointerEvents = 'none';
+  }
+
+  function selectQual(idx) {
+    const item = qualData[idx];
+    document.querySelectorAll('.qual-item').forEach(el => el.classList.remove('selected'));
+    const el = document.querySelector(`.qual-item[data-idx="${idx}"]`);
+    if (el) { el.classList.add('selected'); el.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+    quizData.qualification = item.n;
+    const box = document.getElementById('qualResult');
+    box.style.display = 'block';
+    if (item.c === 1) {
+      box.className = 'qual-result-box qr1';
+      box.innerHTML = `<strong>✅ Sie sind direkt qualifiziert!</strong>${item.info || 'Keine weiteren Voraussetzungen erforderlich. Einfach bewerben!'}`;
+    } else if (item.c === 2) {
+      box.className = 'qual-result-box qr2';
+      box.innerHTML = `<strong>✅ Sie sind qualifiziert!</strong>Zusätzliche Voraussetzung: ${item.req}${item.info ? '<br><em style="font-size:.8rem;opacity:.8;">' + item.info + '</em>' : ''}`;
+    } else if (item.c === 3) {
+      box.className = 'qual-result-box qr3';
+      box.innerHTML = `<strong>⚡ Potenziell qualifizierbar</strong>Zusätzlich erforderlich: ${item.req}<br><span style="display:block;margin-top:6px;font-size:.82rem;">Trotzdem gerne bewerben – wir prüfen Ihre Situation persönlich.</span>`;
+    } else {
+      box.className = 'qual-result-box qr4';
+      box.innerHTML = `<strong>ℹ️ Einzelfallentscheidung</strong>${item.req}<br><span style="display:block;margin-top:6px;font-size:.82rem;">Sprechen Sie uns direkt an – wir klären gemeinsam, ob eine Anerkennung möglich ist.</span>`;
+    }
+    const btn = document.getElementById('nextBtn1');
+    btn.style.opacity = '1'; btn.style.pointerEvents = 'auto';
+  }
+
   let currentStep = 1;
 
   function pickOption(el, key, value) {
@@ -765,12 +998,11 @@
   }
 
   function buildSummary() {
-    const qLabel = qualLabels[quizData.qualification] || quizData.qualification;
     document.getElementById('quizSummary').innerHTML =
-      '📋 <strong>Ihre Angaben:</strong> ' + qLabel +
+      '📋 <strong>Ihre Angaben:</strong> ' + quizData.qualification +
       ' · ' + quizData.hours +
       ' · Start: ' + quizData.start;
-    document.getElementById('f_qualification').value = qLabel;
+    document.getElementById('f_qualification').value = quizData.qualification;
     document.getElementById('f_hours').value = quizData.hours;
     document.getElementById('f_start').value = quizData.start;
   }
